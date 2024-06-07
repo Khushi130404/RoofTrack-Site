@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SiteSupervisorProfileActivity">
+
+    <TextView
+        android:id="@+id/tvCompany"
+        android:text="Shri Balaji Roofing"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_weight="0.5"
+        >
+
+        <TextView
+            android:text="Welcome, Site Supervisor"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            ></TextView>
+
+        <ImageView
+            android:src="@drawable/profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.3"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="20"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et1"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et2"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et3"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et4"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et5"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et6"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv7"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et7"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv8"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et8"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv9"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et9"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv10"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et10"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv11"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et11"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv12"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et12"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv13"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et13"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv14"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et14"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv15"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et15"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/linear_style"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv16"
+                    android:text="Username"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    style="@style/tv_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/et16"
+                    android:layout_width="0dp"
+                    style="@style/et_style"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    ></EditText>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_weight="0.7"
+        >
+
+        <Button
+            android:id="@+id/btUpdate"
+            android:text="Update"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></Button>
+
+        <Button
+            android:id="@+id/btBack"
+            android:text="Back"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

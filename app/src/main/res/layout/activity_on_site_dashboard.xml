@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnSiteDashboardActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:text="Welcome, Site Supervisor"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            ></TextView>
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:src="@drawable/profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/siteInventory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:background="#6B8A7A"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="3"
+        >
+
+        <TextView
+            android:textSize="30dp"
+            android:text="Site Inventory"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.4"
+            ></TextView>
+
+        <TextView
+            android:text="View Site Stock"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            ></TextView>
+
+        <TextView
+            android:text="On Hand Material"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dailyReport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:background="#C39898"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="3"
+        >
+
+        <TextView
+            android:textSize="30dp"
+            android:text="Daily Attendance and Work Report"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.4"
+            ></TextView>
+
+        <TextView
+            android:text="Daily work report"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            ></TextView>
+
+        <TextView
+            android:text="Project report and worker's attendance"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            ></TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

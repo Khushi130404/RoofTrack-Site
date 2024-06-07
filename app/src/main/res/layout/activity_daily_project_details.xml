@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DailyProjectDetailsActivity">
+
+    <TextView
+        android:textSize="20dp"
+        android:text="Daily attendance and work report"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        ></TextView>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="15"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:text="Select project : "
+                android:layout_width="0dp"
+                android:gravity="center|start"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                ></TextView>
+
+            <Spinner
+                android:id="@+id/spProject"
+                android:textAlignment="center"
+                android:gravity="center|start"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                ></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:text="Customer Name : "
+                android:layout_width="0dp"
+                android:gravity="center|start"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/tvCustomer"
+                android:layout_width="0dp"
+                android:gravity="center|start"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                ></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:text="PO No : "
+                android:layout_width="0dp"
+                android:gravity="center|start"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/tvPONo"
+                android:layout_width="0dp"
+                android:gravity="center|start"
+                android:layout_height="match_parent"
+                android:layout_weight="1.6"
+                ></TextView>
+
+        </LinearLayout>
+
+        <DatePicker
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            ></DatePicker>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:weightSum="3"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            >
+
+            <Button
+                android:id="@+id/btAttendance"
+                android:text="Daily Attendance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                ></Button>
+
+            <Button
+                android:id="@+id/btWorkReport"
+                android:text="Daily Work Report"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                ></Button>
+
+            <Button
+                android:id="@+id/btPrevAttendance"
+                android:text="Previous Attendance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                ></Button>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

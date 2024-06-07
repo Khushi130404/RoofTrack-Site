@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:weightSum="7"
+        android:layout_weight="1"
+        >
+
+        <EditText
+            android:id="@+id/etSrno"
+            android:hint="Srno"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etItemDetails"
+            android:hint="Item Details"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etUnit"
+            android:hint="Unit"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etProjectQty"
+            android:hint="Project Qty"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etQtyWork"
+            android:hint="Qty Work"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etRemark"
+            android:hint="Remark"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <Button
+            android:id="@+id/btAdd"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Add Report"
+            android:textSize="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
