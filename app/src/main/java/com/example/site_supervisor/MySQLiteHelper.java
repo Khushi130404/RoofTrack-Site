@@ -39,7 +39,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper
             this.getReadableDatabase();
             this.close();
 
-
             try
             {
                 InputStream is = cont.getAssets().open(dbName);

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/white"
+    android:background="@drawable/background_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,6 +11,9 @@
     tools:context=".LoginActivity">
 
     <ImageView
+        android:src="@drawable/logo"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -21,35 +24,38 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            app:cardBackgroundColor="#76ABAE"
-            app:cardCornerRadius="80sp"
+            app:cardBackgroundColor="#C8B6A6"
+            app:cardCornerRadius="70dp"
             android:alpha="0.8"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="0dp"
-            android:paddingTop="50dp"
-            android:paddingBottom="50dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="60dp"
+            android:paddingBottom="60dp"
+            android:layout_marginBottom="50dp"
             app:cardElevation="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="4"
+                android:weightSum="2.8"
                 android:orientation="vertical"
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="3"
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     >
 
                     <TextView
                         android:text="Company : "
-                        android:gravity="center"
+                        android:gravity="center|end"
+                        style="@style/login_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -68,22 +74,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:text="Sign in to start your session"
+                    style="@style/login_text"
+                    android:text="Signin to start your session"
                     android:gravity="center"
                     ></TextView>
 
                 <EditText
                     android:id="@+id/etPhone"
                     android:hint="contact number"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:alpha="0.9"
+                    android:background="@drawable/login_edittext"
+                    android:layout_marginRight="20dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     ></EditText>
 
                 <CheckBox
                     android:id="@+id/cbRemember"
                     android:text="Remember Me"
+                    style="@style/login_text"
+                    android:backgroundTint="#61584C"
+                    android:shadowColor="#61584C"
+                    android:textColorHint="#61584C"
+                    android:searchResultHighlightColor="#61584C"
+                    android:layout_marginLeft="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
@@ -92,14 +111,14 @@
                 <Button
                     android:id="@+id/btSignIn"
                     android:text="Sign In"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:background="@drawable/button3"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:layout_weight="0.7"
+                    android:layout_marginBottom="40dp"
+                    android:layout_weight="0.4"
                     ></Button>
 
             </LinearLayout>
