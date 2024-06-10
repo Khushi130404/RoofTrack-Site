@@ -2,7 +2,6 @@ package com.example.site_supervisor;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class WorkerAttendanceAdapter extends ArrayAdapter
     List<WorkerAttendancePojo> worker;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
 
     public WorkerAttendanceAdapter(Context cont, int resource,List worker)

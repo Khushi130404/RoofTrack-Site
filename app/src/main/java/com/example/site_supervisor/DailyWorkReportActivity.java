@@ -17,12 +17,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,7 +29,7 @@ public class DailyWorkReportActivity extends Activity
     List<DailyWorkReportPojo> report;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
     ListView listWork;
     ImageView imgAdd;

@@ -2,10 +2,12 @@ package com.example.site_supervisor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,8 @@ public class OnSiteDashboardActivity extends Activity
 {
     ImageView imgProfile;
     LinearLayout dailyReport, siteInventory;
+    SharedPreferences share;
+    TextView tvCompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +31,10 @@ public class OnSiteDashboardActivity extends Activity
         imgProfile = findViewById(R.id.imgProfile);
         dailyReport = findViewById(R.id.dailyReport);
         siteInventory = findViewById(R.id.siteInventory);
+        tvCompany = findViewById(R.id.tvCompany);
+
+        share = getSharedPreferences("siteSupervisor",MODE_PRIVATE);
+        tvCompany.setText(share.getString("company","Shri Balaji Roofing"));
 
         imgProfile.setOnClickListener(new View.OnClickListener()
         {

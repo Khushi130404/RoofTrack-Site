@@ -8,18 +8,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class LoginActivity extends Activity
@@ -29,11 +26,12 @@ public class LoginActivity extends Activity
     CheckBox cbRemember;
     Random random;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     SQLiteDatabase db = null;
     Button btSignIn;
     String path;
     SharedPreferences share;
+    List<String> company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +47,17 @@ public class LoginActivity extends Activity
             finish();
         }
 
+        company = new ArrayList<>();
+        company.add("Shri Balaji Roofing");
+        company.add("Steelonn Infrastructure");
+
         sp = findViewById(R.id.sp);
         etPhone = findViewById(R.id.etPhone);
         cbRemember = findViewById(R.id.cbRemember);
         btSignIn = findViewById(R.id.btSignIn);
+
+        ArrayAdapter<String> ad = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,company);
+        sp.setAdapter(ad);
 
         path = dbPath+dbName;
         random = new Random();
@@ -96,6 +101,7 @@ public class LoginActivity extends Activity
                         }
                         SharedPreferences.Editor edit = share.edit();
                         edit.putString("phone",phone);
+                        edit.putString("company",sp.getSelectedItem().toString());
                         edit.apply();
                         i.putExtra("otp",otp);
                         SmsManager sms=SmsManager.getDefault();

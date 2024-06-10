@@ -9,22 +9,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +26,7 @@ public class PreviousAttendanceActivity extends Activity
     List<WorkerAttendancePojo> worker;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
     ListView listAttendance;
     ImageView imgAdd;

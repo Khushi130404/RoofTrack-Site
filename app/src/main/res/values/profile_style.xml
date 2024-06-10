@@ -3,7 +3,16 @@
 
     <style name="linear_style"></style>
 
-    <style name="tv_style"></style>
+    <style name="tv_style">
+        <item name="android:layout_marginLeft">35dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:gravity">center|start</item>
+    </style>
 
-    <style name="et_style"></style>
+    <style name="et_style">
+        <item name="android:textColor">#61584C</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="background">@drawable/profile_edittext</item>
+    </style>
+
 </resources>

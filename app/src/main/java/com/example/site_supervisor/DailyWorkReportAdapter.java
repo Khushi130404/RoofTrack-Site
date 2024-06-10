@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
 public class DailyWorkReportAdapter extends ArrayAdapter
@@ -21,7 +19,7 @@ public class DailyWorkReportAdapter extends ArrayAdapter
     List<DailyWorkReportPojo> report;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
 
     public DailyWorkReportAdapter(Context cont, int resource, List report)

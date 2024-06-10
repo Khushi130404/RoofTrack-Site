@@ -4,22 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:weightSum="7"
+    android:background="@color/white"
+    android:weightSum="8.5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnSiteDashboardActivity">
 
+    <TextView
+        android:id="@+id/tvCompany"
+        android:layout_marginTop="10dp"
+        style="@style/company_text"
+        android:text="Shri Balaji Roofing"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.1"
+        ></TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="#F1DEC9"
         android:orientation="horizontal"
         android:weightSum="4"
-        android:layout_weight="1"
+        android:paddingLeft="70dp"
+        android:layout_weight="0.9"
         >
 
         <TextView
             android:text="Welcome, Site Supervisor"
             android:layout_width="0dp"
+            android:textColor="@color/black"
             android:gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="3"
@@ -27,6 +43,7 @@
 
         <ImageView
             android:id="@+id/imgProfile"
+            android:padding="2dp"
             android:src="@drawable/profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -41,15 +58,18 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:weightSum="4"
-        android:background="#6B8A7A"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/site_inventory_box"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="3"
         >
 
         <TextView
             android:textSize="30dp"
             android:text="Site Inventory"
+            android:textColor="@color/white"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -59,6 +79,7 @@
         <TextView
             android:text="View Site Stock"
             android:gravity="center"
+            style="@style/site_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
@@ -66,7 +87,8 @@
 
         <TextView
             android:text="On Hand Material"
-            android:gravity="center"
+            android:gravity="center|top"
+            style="@style/site_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
@@ -80,9 +102,11 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:weightSum="4"
-        android:background="#C39898"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/daily_project_details_box"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         android:layout_weight="3"
         >
 
@@ -90,6 +114,7 @@
             android:textSize="30dp"
             android:text="Daily Attendance and Work Report"
             android:gravity="center"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2.4"
@@ -100,14 +125,16 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            style="@style/daily_text"
             android:layout_weight="0.8"
             ></TextView>
 
         <TextView
             android:text="Project report and worker's attendance"
-            android:gravity="center"
+            android:gravity="center|top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            style="@style/daily_text"
             android:layout_weight="0.8"
             ></TextView>
 

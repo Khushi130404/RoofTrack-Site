@@ -5,12 +5,14 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:weightSum="8"
+    android:background="@drawable/background_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DailyProjectDetailsActivity">
 
     <TextView
         android:textSize="20dp"
+        style="@style/company_text"
         android:text="Daily attendance and work report"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -109,6 +111,8 @@
 
         <DatePicker
             android:id="@+id/date"
+            style="@style/datePicker_style"
+            android:background="#C8B6A6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -128,6 +132,8 @@
             <Button
                 android:id="@+id/btAttendance"
                 android:text="Daily Attendance"
+                style="@style/button_style"
+                android:background="@drawable/button3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -136,6 +142,10 @@
             <Button
                 android:id="@+id/btWorkReport"
                 android:text="Daily Work Report"
+                android:layout_marginTop="10dp"
+                style="@style/button_style"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -145,6 +155,8 @@
                 android:id="@+id/btPrevAttendance"
                 android:text="Previous Attendance"
                 android:layout_width="match_parent"
+                style="@style/button_style"
+                android:background="@drawable/button3"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 ></Button>
