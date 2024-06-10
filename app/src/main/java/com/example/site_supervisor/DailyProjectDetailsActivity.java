@@ -15,16 +15,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DailyProjectDetailsActivity extends Activity
@@ -33,7 +24,7 @@ public class DailyProjectDetailsActivity extends Activity
     TextView tvCustomer, tvPONo;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
-    public static String dbName= "Balaji_Site_Supervisor.db";
+    public static String dbName= "Site_Supervisor.db";
     String path;
     SpinnerAdapter spinnerAdapter;
     Button btAttendance, btWorkReport, btPrevAttendance;

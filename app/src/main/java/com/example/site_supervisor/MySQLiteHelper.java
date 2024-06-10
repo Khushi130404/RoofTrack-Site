@@ -13,7 +13,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper
 {
     Context cont;
 
-    public static String dbName = "Balaji_Site_Supervisor.db";
+    public static String dbName = "Site_Supervisor.db";
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
     SQLiteDatabase db= null;
     public MySQLiteHelper(Context cont)
