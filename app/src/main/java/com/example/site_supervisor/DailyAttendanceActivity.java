@@ -200,7 +200,7 @@ public class DailyAttendanceActivity extends Activity
                 ContentValues values = new ContentValues();
                 values.put("id", id);
                 values.put("ProjectId", getIntent().getIntExtra("projectId",0));
-                values.put("atten_date", getIntent().getStringExtra("date"));
+                values.put("atten_date", todayDate);
                 values.put("e_code", 0);
                 values.put("e_name", work.getName());
                 values.put("a_status", work.getPreset());

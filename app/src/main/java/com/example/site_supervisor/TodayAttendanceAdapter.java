@@ -1,7 +1,10 @@
 package com.example.site_supervisor;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.loader.content.AsyncTaskLoader;
 
 import java.util.List;
 
@@ -38,8 +43,6 @@ public class TodayAttendanceAdapter extends ArrayAdapter
         LayoutInflater inflater = LayoutInflater.from(cont);
         View view = inflater.inflate(resource,null,false);
 
-        WorkerAttendancePojo work = worker.get(position);
-
         EditText et[] = new EditText [5];
         CheckBox cbPresent = view.findViewById(R.id.cbPresent);
 
@@ -51,10 +54,11 @@ public class TodayAttendanceAdapter extends ArrayAdapter
         }
 
         Button btSet = view.findViewById(R.id.btSet);
+        Button btDelete = view.findViewById(R.id.btDelete);
 
-        et[0].setText(""+work.getSrno());
-        et[1].setText(work.getName());
-        if(work.getPreset().equalsIgnoreCase("P"))
+        et[0].setText(""+worker.get(position).getSrno());
+        et[1].setText(worker.get(position).getName());
+        if(worker.get(position).getPreset().equalsIgnoreCase("P"))
         {
             cbPresent.setChecked(true);
         }
@@ -63,14 +67,24 @@ public class TodayAttendanceAdapter extends ArrayAdapter
             cbPresent.setChecked(false);
         }
 
-        et[2].setText(work.getInTime());
-        et[3].setText(work.getOutTime());
-        et[4].setText(""+work.getRate());
+        et[2].setText(worker.get(position).getInTime());
+        et[3].setText(worker.get(position).getOutTime());
+        et[4].setText(""+worker.get(position).getRate());
 
-
-        btSet.setOnClickListener(new View.OnClickListener() {
+        btDelete.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                showDialog(position);
+            }
+        });
+
+        btSet.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
                 try
                 {
                     db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
@@ -98,7 +112,7 @@ public class TodayAttendanceAdapter extends ArrayAdapter
                 updateQuery+="in_time = '"+worker.get(position).getInTime()+"', ";
                 updateQuery+="out_time = '"+worker.get(position).getOutTime()+"', ";
                 updateQuery+="rate = "+worker.get(position).getRate()+" ";
-                updateQuery+="where id = "+work.getId();
+                updateQuery+="where id = "+worker.get(position).getId();
 
                 try
                 {
@@ -140,7 +154,7 @@ public class TodayAttendanceAdapter extends ArrayAdapter
                     updateQuery = "update daily_atten set a_status = 'A'";
                 }
 
-                updateQuery+="where id = "+work.getId();
+                updateQuery+="where id = "+worker.get(position).getId();
 
                 try
                 {
@@ -152,8 +166,67 @@ public class TodayAttendanceAdapter extends ArrayAdapter
                 {
                     Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
+
+                notifyDataSetChanged();
             }
         });
         return view;
     }
+
+    void showDialog(int position)
+    {
+        AlertDialog.Builder al = new AlertDialog.Builder(cont);
+        al.setTitle("Do you want to delete ???");
+
+        al.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(getContext(),"No action",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        al.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                new AsyncTask<Void,Void,String>()
+                {
+                    @Override
+                    protected String doInBackground(Void... voids)
+                    {
+                        try
+                        {
+                            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+                        }
+
+                        String deleteQuery = "delete from daily_atten where id = "+worker.get(position).getId();
+
+                        try
+                        {
+                            db.execSQL(deleteQuery);
+                            db.close();
+                            Toast.makeText(cont,"Record Deleted",Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                        worker.remove(position);
+                        notifyDataSetChanged();
+
+                        return null;
+                    }
+                };
+            }
+        });
+
+        AlertDialog alert = al.create();
+        alert.show();
+    }
+
 }
