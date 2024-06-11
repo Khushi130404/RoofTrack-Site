@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:cardBackgroundColor="#EEEEEE"
+        app:cardBackgroundColor="#C8B6A6"
         app:cardCornerRadius="50dp"
         android:alpha="0.8"
         android:layout_marginLeft="30dp"
@@ -52,6 +52,7 @@
                     android:id="@+id/etSrno"
                     android:gravity="center|start"
                     android:enabled="false"
+                    style="@style/et_style"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:clickable="false"
@@ -84,6 +85,7 @@
                     android:gravity="center|start"
                     android:enabled="false"
                     android:focusable="false"
+                    style="@style/et_style"
                     android:focusableInTouchMode="false"
                     android:clickable="false"
                     android:inputType="none"
@@ -122,6 +124,7 @@
                     android:id="@+id/etInTime"
                     android:gravity="center|start"
                     android:layout_width="0dp"
+                    style="@style/et_style"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     ></EditText>
@@ -148,6 +151,7 @@
                     android:id="@+id/etOutTime"
                     android:gravity="center|start"
                     android:layout_width="0dp"
+                    style="@style/et_style"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     ></EditText>
@@ -174,6 +178,7 @@
                     android:id="@+id/etRate"
                     android:gravity="center|start"
                     android:layout_width="0dp"
+                    style="@style/et_style"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     ></EditText>

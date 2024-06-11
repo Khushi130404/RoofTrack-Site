@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:weightSum="8"
+    android:background="@drawable/background_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DailyWorkReportActivity">
@@ -12,6 +13,7 @@
     <TextView
         android:text="Daily Work Report"
         android:gravity="center"
+        style="@style/company_text"
         android:textSize="22dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"

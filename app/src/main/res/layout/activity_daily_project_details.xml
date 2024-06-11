@@ -118,7 +118,6 @@
             android:layout_weight="9"
             ></DatePicker>
 
-
         <LinearLayout
             android:orientation="vertical"
             android:weightSum="3"
@@ -162,7 +161,6 @@
                 ></Button>
 
         </LinearLayout>
-
 
     </LinearLayout>
 
