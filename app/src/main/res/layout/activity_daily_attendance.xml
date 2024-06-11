@@ -38,6 +38,7 @@
 
         <TextView
             android:id="@+id/tvDate"
+            android:textColor="@color/text"
             android:text="Date : "
             android:gravity="center|end"
             android:layout_marginRight="10dp"
