@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Site_Supervisor"
         tools:targetApi="31">
         <activity
+            android:name=".MaterialConsumptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".DailyWorkReportActivity"
             android:exported="false" />
         <activity

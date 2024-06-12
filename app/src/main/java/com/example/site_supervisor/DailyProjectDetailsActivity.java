@@ -165,6 +165,7 @@ public class DailyProjectDetailsActivity extends Activity
 
                 Intent i = new Intent(getApplicationContext(), DailyWorkReportActivity.class);
                 i.putExtra("projectId",cur.getInt(0));
+                i.putExtra("date",""+addZero(date.getDayOfMonth())+"-"+addZero((date.getMonth()+1))+"-"+date.getYear());
                 startActivity(i);
             }
         });
