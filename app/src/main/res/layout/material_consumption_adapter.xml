@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="5.5"
+    android:background="@drawable/et_box"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/etPosition"
+        android:text="0"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etMark"
+        android:text="Assembly\nMark"
+        android:layout_width="0dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:background="@drawable/et_box"
+        android:inputType="none"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etName"
+        android:text="Name"
+        android:gravity="center"
+        android:background="@drawable/et_box"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:text="Weight"
+        android:gravity="center"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></EditText>
+
+    <ImageView
+        android:id="@+id/imgEdit"
+        android:src="@drawable/edit"
+        android:layout_width="0dp"
+        android:background="@drawable/et_box"
+        android:padding="2dp"
+        android:layout_height="70dp"
+        android:layout_weight="0.5"
+        ></ImageView>
+
+
+</LinearLayout>

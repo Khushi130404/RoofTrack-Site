@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:background="@drawable/background_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MaterialConsumptionActivity">
+
+    <TextView
+        android:text="Material Consumption Report"
+        android:gravity="center"
+        style="@style/company_text"
+        android:textSize="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_weight="0.5"
+        >
+
+        <ImageView
+            android:id="@+id/imgAdd"
+            android:src="@drawable/attendance"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:text="Date : "
+            android:gravity="center|end"
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="6.5"
+        android:layout_weight="0.8"
+        >
+
+        <TextView
+            android:text="Sr\nNo"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></TextView>
+
+        <TextView
+            android:text="Assembly\nMark"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:text="Name"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:text="Weight"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></TextView>
+
+        <TextView
+            android:text="Edit"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            ></TextView>
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listMaterial"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.7"
+        ></ListView>
+
+
+</LinearLayout>
