@@ -2,9 +2,12 @@ package com.example.site_supervisor;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -30,6 +33,28 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
 
     public View getView(final int position, View convetView, ViewGroup parent)
     {
-        return convetView;
+        LayoutInflater inflater = LayoutInflater.from(cont);
+        View view = inflater.inflate(resource,null,false);
+
+        TextView tvPosition = view.findViewById(R.id.tvPosition);
+        TextView tvMark = view.findViewById(R.id.tvMark);
+        TextView tvName = view.findViewById(R.id.tvName);
+        TextView tvWeight = view.findViewById(R.id.tvWeight);
+        ImageView imgEdit = view.findViewById(R.id.imgEdit);
+
+        tvPosition.setText(""+(position+1));
+        tvMark.setText(material.get(position).getAssemblyMark());
+        tvName.setText(material.get(position).getName());
+        tvWeight.setText(material.get(position).getWeight().toString());
+
+        imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
+
+        return view;
     }
 }

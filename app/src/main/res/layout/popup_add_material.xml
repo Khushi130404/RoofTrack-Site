@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:weightSum="3"
+        android:layout_weight="1"
+        >
+
+        <EditText
+            android:id="@+id/etAssemblyMark"
+            android:hint="Assembly Mark"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etWeight"
+            android:hint="Weight"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            ></EditText>
+
+        <Button
+            android:id="@+id/btAdd"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Add Consumption"
+            android:textSize="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
