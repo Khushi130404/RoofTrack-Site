@@ -48,11 +48,64 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="7.5"
+        android:layout_weight="0.8"
+        >
+
+        <TextView
+            android:id="@+id/tvPosition"
+            android:text="Sr\nNo"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/tvMark"
+            android:text="Assembly\nMark"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:text="Name"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/tvWeight"
+            android:text="Weight"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listWork"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6.5"
+        android:layout_weight="5.7"
         ></ListView>
 
 

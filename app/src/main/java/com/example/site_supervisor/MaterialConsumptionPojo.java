@@ -3,11 +3,9 @@ package com.example.site_supervisor;
 public class MaterialConsumptionPojo
 {
     int id;
-    int projectID;
     String assemblyMark;
     String name;
     Double weight;
-    String date;
 
     public int getId() {
         return id;
@@ -15,14 +13,6 @@ public class MaterialConsumptionPojo
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getProjectID() {
-        return projectID;
-    }
-
-    public void setProjectID(int projectID) {
-        this.projectID = projectID;
     }
 
     public String getAssemblyMark() {
@@ -49,11 +39,4 @@ public class MaterialConsumptionPojo
         this.weight = weight;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

@@ -163,7 +163,7 @@ public class DailyProjectDetailsActivity extends Activity
 
                 db.close();
 
-                Intent i = new Intent(getApplicationContext(), DailyWorkReportActivity.class);
+                Intent i = new Intent(getApplicationContext(), MaterialConsumptionActivity.class);
                 i.putExtra("projectId",cur.getInt(0));
                 i.putExtra("date",""+addZero(date.getDayOfMonth())+"-"+addZero((date.getMonth()+1))+"-"+date.getYear());
                 startActivity(i);

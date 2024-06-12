@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="7.5"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvPosition"
+        android:text="0"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tvMark"
+        android:text="Assembly\nMark"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:text="Name"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tvWeight"
+        android:text="Weight"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        ></TextView>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></ImageView>
+
+
+</LinearLayout>

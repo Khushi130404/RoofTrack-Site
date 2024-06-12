@@ -1,11 +1,13 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,5 +43,27 @@ public class MaterialConsumptionActivity extends Activity
 
         material = new ArrayList<>();
 
+        tvDate.setText(tvDate.getText().toString()+getIntent().getStringExtra("date"));
+
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        Cursor cur = db.rawQuery("select id,assembly_mark,name,net_weight from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
+
+        while (cur.moveToNext())
+        {
+            MaterialConsumptionPojo mcp = new MaterialConsumptionPojo();
+            mcp.setId(cur.getInt(0));
+            mcp.setAssemblyMark(cur.getString(1));
+            mcp.setName(cur.getString(2));
+            mcp.setWeight(cur.getDouble(3));
+            material.add(mcp);
+        }
     }
 }
