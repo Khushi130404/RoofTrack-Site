@@ -40,7 +40,7 @@ public class MaterialConsumptionPojo
         this.weight = weight;
     }
 
-    public boolean isEditable() {
+    public boolean getEditable() {
         return isEditable;
     }
 

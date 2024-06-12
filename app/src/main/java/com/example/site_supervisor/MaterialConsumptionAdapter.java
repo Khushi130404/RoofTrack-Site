@@ -57,11 +57,36 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
         et[2].setText(material.get(position).getName());
         et[3].setText(material.get(position).getWeight().toString());
 
+        if(material.get(position).getEditable())
+        {
+            for(int i=1; i<et.length; i++)
+            {
+                et[i].setEnabled(true);
+                et[i].setFocusable(true);
+                et[i].setFocusableInTouchMode(true);
+                et[i].setClickable(true);
+            }
+
+            imgEdit.setImageResource(R.drawable.done);
+        }
+        else
+        {
+            for(int i=1; i<et.length; i++)
+            {
+                et[i].setEnabled(false);
+                et[i].setFocusable(false);
+                et[i].setFocusableInTouchMode(false);
+                et[i].setClickable(false);
+            }
+
+            imgEdit.setImageResource(R.drawable.edit);
+        }
+
         imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                if(material.get(position).isEditable())
+                if(material.get(position).getEditable())
                 {
                     try
                     {
@@ -100,6 +125,7 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         et[i].setFocusableInTouchMode(false);
                         et[i].setClickable(false);
                     }
+                    imgEdit.setImageResource(R.drawable.edit);
 
                 }
                 else
@@ -113,6 +139,8 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                     }
 
                     material.get(position).setEditable(true);
+                    imgEdit.setImageResource(R.drawable.done);
+
                 }
             }
         });
