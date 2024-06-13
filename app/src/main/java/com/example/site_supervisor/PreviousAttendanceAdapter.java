@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class WorkerAttendanceAdapter extends ArrayAdapter
+public class PreviousAttendanceAdapter extends ArrayAdapter
 {
 
     Context cont;
@@ -23,7 +23,7 @@ public class WorkerAttendanceAdapter extends ArrayAdapter
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
 
-    public WorkerAttendanceAdapter(Context cont, int resource,List worker)
+    public PreviousAttendanceAdapter(Context cont, int resource, List worker)
     {
         super(cont, resource, worker);
         this.cont = cont;
