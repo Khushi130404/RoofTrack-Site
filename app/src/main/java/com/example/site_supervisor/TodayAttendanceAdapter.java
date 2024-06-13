@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -51,8 +52,10 @@ public class TodayAttendanceAdapter extends ArrayAdapter
             et[i] = view.findViewById(id[i]);
         }
 
-        Button btSet = view.findViewById(R.id.btSet);
-        Button btDelete = view.findViewById(R.id.btDelete);
+//        Button btSet = view.findViewById(R.id.btSet);
+//        Button btDelete = view.findViewById(R.id.btDelete);
+
+        ImageView imgSet = view.findViewById(R.id.imgSet);
 
         et[0].setText(""+worker.get(position).getSrno());
         et[1].setText(worker.get(position).getName());
@@ -69,16 +72,7 @@ public class TodayAttendanceAdapter extends ArrayAdapter
         et[3].setText(worker.get(position).getOutTime());
         et[4].setText(""+worker.get(position).getRate());
 
-        btDelete.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                showDialog(position);
-            }
-        });
-
-        btSet.setOnClickListener(new View.OnClickListener()
+        imgSet.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)

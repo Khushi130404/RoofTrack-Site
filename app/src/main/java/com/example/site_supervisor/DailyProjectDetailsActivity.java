@@ -138,7 +138,7 @@ public class DailyProjectDetailsActivity extends Activity
                 Cursor cur = db.rawQuery("select ProjectID from tbl_ProjectSite where ProjectName = '"+spProject.getSelectedItem().toString()+"'",null);
                 cur.moveToFirst();
 
-                Intent i = new Intent(getApplicationContext(), DailyAttendanceActivity.class);
+                Intent i = new Intent(getApplicationContext(), TodaysAttendanceActivity.class);
                 i.putExtra("projectId",cur.getInt(0));
                 db.close();
                 startActivity(i);

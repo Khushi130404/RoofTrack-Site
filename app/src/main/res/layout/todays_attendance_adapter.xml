@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:weightSum="6"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="@drawable/et_box"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/cbPresent"
+        android:layout_width="0dp"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="0.5"
+        ></CheckBox>
+
+    <EditText
+        android:id="@+id/etSrno"
+        android:layout_width="0dp"
+        android:text="0"
+        android:inputType="number"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="0.5"
+        ></EditText>
+
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="0dp"
+        android:text="Name"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1.5"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etInTime"
+        android:layout_width="0dp"
+        android:background="@drawable/et_box"
+        android:text="In\nTime"
+        android:inputType="datetime"
+        style="@style/list_text"
+        android:layout_weight="1"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etOutTime"
+        android:layout_width="0dp"
+        android:text="Out\nTime"
+        android:inputType="datetime"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etRate"
+        android:layout_width="0dp"
+        android:text="Rate"
+        android:inputType="numberDecimal"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1"
+        ></EditText>
+
+
+    <ImageView
+        android:id="@+id/imgSet"
+        android:src="@drawable/done"
+        style="@style/list_text"
+        android:padding="2dp"
+        android:background="@drawable/et_box"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        ></ImageView>
+
+</LinearLayout>
