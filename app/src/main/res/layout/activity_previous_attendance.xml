@@ -53,17 +53,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:weightSum="6"
         android:layout_weight="0.8"
         >
 
-        <TextView
-            android:layout_width="0dp"
-            android:text="Present"
-            style="@style/head_text"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            ></TextView>
 
         <TextView
             android:layout_width="0dp"
@@ -79,7 +74,15 @@
             android:text="Name"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
+            ></TextView>
+
+        <TextView
+            android:layout_width="0dp"
+            android:text="Present"
+            style="@style/head_text"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
             ></TextView>
 
         <TextView
@@ -109,11 +112,11 @@
 
         <TextView
             android:layout_width="0dp"
-            android:text="Edit"
             style="@style/head_text"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             ></TextView>
+
 
     </LinearLayout>
 

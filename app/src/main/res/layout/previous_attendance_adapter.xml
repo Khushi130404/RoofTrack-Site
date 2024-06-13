@@ -2,239 +2,109 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:weightSum="1"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
+    android:orientation="horizontal"
+    android:weightSum="6"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="@drawable/et_box"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <EditText
+        android:id="@+id/etSrno"
+        android:layout_width="0dp"
+        android:text="0"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="0.5"
+        ></EditText>
+
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="0dp"
+        android:text="Name"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:maxLines="2"
+        android:scrollHorizontally="true"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1.5"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etPresent"
+        android:layout_width="0dp"
+        android:enabled="false"
+        android:text="P"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="0.5"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/etInTime"
+        android:layout_width="0dp"
+        android:background="@drawable/et_box"
+        android:text="In\nTime"
+        style="@style/list_text"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
         android:layout_weight="1"
-        app:cardCornerRadius="50dp"
-        android:alpha="0.8"
-        app:cardBackgroundColor="#C8B6A6"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:paddingTop="50dp"
-        android:paddingBottom="50dp"
-        app:cardElevation="15dp">
+        ></EditText>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:weightSum="7"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+    <EditText
+        android:id="@+id/etOutTime"
+        android:layout_width="0dp"
+        android:text="Out\nTime"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1"
+        ></EditText>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
+    <EditText
+        android:id="@+id/etRate"
+        android:layout_width="0dp"
+        android:text="Rate"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:inputType="none"
+        android:background="@drawable/et_box"
+        style="@style/list_text"
+        android:layout_weight="1"
+        ></EditText>
 
-                <TextView
-                    android:text="SrNo : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
 
-                <EditText
-                    android:id="@+id/etSrno"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    style="@style/et_style"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:text="Name : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/etName"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    android:focusable="false"
-                    style="@style/et_style"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:text="Present : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/etPresent"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    android:focusable="false"
-                    style="@style/et_style"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:text="In Time : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/etInTime"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    android:focusable="false"
-                    style="@style/et_style"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:text="Out Time : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/etOutTime"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    style="@style/et_style"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:text="Rate : "
-                    android:gravity="center|start"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/etRate"
-                    android:gravity="center|start"
-                    android:enabled="false"
-                    android:focusable="false"
-                    style="@style/et_style"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"
-                    android:inputType="none"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    ></EditText>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btUpdate"
-                android:text="Update"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                ></Button>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:id="@+id/imgEdit"
+        android:src="@drawable/edit"
+        style="@style/list_text"
+        android:padding="2dp"
+        android:background="@drawable/et_box"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        ></ImageView>
 
 </LinearLayout>

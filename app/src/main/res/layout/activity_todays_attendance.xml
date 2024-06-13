@@ -116,9 +116,7 @@
             android:layout_weight="0.5"
             ></TextView>
 
-
     </LinearLayout>
-
 
     <ListView
         android:id="@+id/listAttendance"

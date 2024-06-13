@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -47,7 +48,9 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
             et[i] = view.findViewById(id[i]);
         }
 
-        Button btUpdate = view.findViewById(R.id.btUpdate);
+        //Button btUpdate = view.findViewById(R.id.btUpdate);
+
+        ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
         et[0].setText(""+work.getSrno());
         et[1].setText(work.getName());
@@ -56,7 +59,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
         et[4].setText(work.getOutTime());
         et[5].setText(""+work.getRate());
 
-        for(int i=0; i<et.length; i++)
+        for(int i=1; i<et.length; i++)
         {
             et[i].setEnabled(work.getEditable());
             et[i].setFocusable(work.getEditable());
@@ -66,15 +69,15 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
 
         if(work.getEditable())
         {
-            btUpdate.setText("Done");
+            imgEdit.setImageResource(R.drawable.done);
         }
 
-        btUpdate.setOnClickListener(new View.OnClickListener() {
+        imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btUpdate.getText().toString().equals("Update"))
+                if(!work.getEditable())
                 {
-                    for(int i=0; i<et.length; i++)
+                    for(int i=1; i<et.length; i++)
                     {
                         et[i].setEnabled(true);
                         et[i].setFocusable(true);
@@ -83,7 +86,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                     }
 
                     worker.get(position).setEditable(true);
-                    btUpdate.setText("Done");
+                    imgEdit.setImageResource(R.drawable.done);
                 }
                 else
                 {
@@ -96,7 +99,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                     {
                         Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                     }
-                    btUpdate.setText("Update");
+                    imgEdit.setImageResource(R.drawable.edit);
 
                     worker.get(position).setEditable(false);
                     worker.get(position).setSrno(Integer.parseInt(et[0].getText().toString()));
