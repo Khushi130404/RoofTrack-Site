@@ -149,6 +149,7 @@ public class MaterialConsumptionActivity extends Activity
 
                 db.close();
                 material.add(mcp);
+
                 popupWindow.dismiss();
             }
         });

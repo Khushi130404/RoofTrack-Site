@@ -78,7 +78,7 @@ public class DailyAttendanceActivity extends Activity
                 worker.add(temp);
             }
 
-            TodayAttendanceAdapter todayAdapter = new TodayAttendanceAdapter(getApplicationContext(),R.layout.todays_worker_attendance,worker);
+            TodayAttendanceAdapter todayAdapter = new TodayAttendanceAdapter(getApplicationContext(),R.layout.todays_attendance_adapter,worker);
             listAttendance.setAdapter(todayAdapter);
         }
         else
@@ -127,7 +127,7 @@ public class DailyAttendanceActivity extends Activity
                 id++;
             }
 
-            TodayAttendanceAdapter todayAdapter = new TodayAttendanceAdapter(getApplicationContext(),R.layout.todays_worker_attendance,worker);
+            TodayAttendanceAdapter todayAdapter = new TodayAttendanceAdapter(getApplicationContext(),R.layout.todays_attendance_adapter,worker);
             listAttendance.setAdapter(todayAdapter);
         }
 
