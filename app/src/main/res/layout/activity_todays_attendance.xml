@@ -64,15 +64,15 @@
             android:layout_width="0dp"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             ></TextView>
 
         <TextView
             android:layout_width="0dp"
-            android:text="Sr\nNo"
+            android:text="SrNo"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.7"
             ></TextView>
 
 

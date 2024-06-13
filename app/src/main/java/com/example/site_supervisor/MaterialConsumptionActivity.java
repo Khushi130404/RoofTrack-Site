@@ -37,7 +37,6 @@ public class MaterialConsumptionActivity extends Activity
     ListView listMaterial;
     ImageView imgAdd;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

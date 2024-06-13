@@ -38,7 +38,7 @@ public class TodaysAttendanceActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_attendance);
+        setContentView(R.layout.activity_todays_attendance);
 
         tvDate = findViewById(R.id.tvDate);
         listAttendance = findViewById(R.id.listAttendance);
@@ -159,6 +159,21 @@ public class TodaysAttendanceActivity extends Activity
         EditText etOutTime = popupView.findViewById(R.id.etOutTime);
         EditText etRate = popupView.findViewById(R.id.etRate);
         Button btAdd = popupView.findViewById(R.id.btAdd);
+
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        Cursor cur_srn = db.rawQuery("select Max(srno) from daily_atten where ProjectId = "+getIntent().getIntExtra("projectId",0),null);
+        cur_srn.moveToFirst();
+        int srno = cur_srn.getInt(0)+1;
+        etSrno.setText(""+srno);
+        db.close();
 
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override

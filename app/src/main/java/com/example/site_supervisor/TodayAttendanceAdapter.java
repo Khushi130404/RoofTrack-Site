@@ -52,9 +52,6 @@ public class TodayAttendanceAdapter extends ArrayAdapter
             et[i] = view.findViewById(id[i]);
         }
 
-//        Button btSet = view.findViewById(R.id.btSet);
-//        Button btDelete = view.findViewById(R.id.btDelete);
-
         ImageView imgSet = view.findViewById(R.id.imgSet);
 
         et[0].setText(""+worker.get(position).getSrno());
@@ -67,7 +64,6 @@ public class TodayAttendanceAdapter extends ArrayAdapter
         {
             cbPresent.setChecked(false);
         }
-
         et[2].setText(worker.get(position).getInTime());
         et[3].setText(worker.get(position).getOutTime());
         et[4].setText(""+worker.get(position).getRate());
@@ -133,7 +129,7 @@ public class TodayAttendanceAdapter extends ArrayAdapter
                     Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                 }
 
-                String updateQuery="";
+                String updateQuery;
 
                 if(cbPresent.isChecked())
                 {

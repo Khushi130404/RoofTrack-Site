@@ -27,11 +27,14 @@
 
     <style name="head_text">
         <item name="android:gravity">center</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="list_text">
         <item name="android:layout_height">60dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
 </resources>

@@ -67,7 +67,7 @@ public class PreviousAttendanceActivity extends Activity
             worker.add(temp);
         }
 
-        WorkerAttendanceAdapter workerAdapter = new WorkerAttendanceAdapter(getApplicationContext(),R.layout.previous_attendance_adapter,worker);
+        PreviousAttendanceAdapter workerAdapter = new PreviousAttendanceAdapter(getApplicationContext(),R.layout.previous_attendance_adapter,worker);
         listAttendance.setAdapter(workerAdapter);
 
         imgAdd.setOnClickListener(new View.OnClickListener()
