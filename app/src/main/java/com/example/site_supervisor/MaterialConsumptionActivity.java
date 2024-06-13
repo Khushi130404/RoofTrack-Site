@@ -78,7 +78,8 @@ public class MaterialConsumptionActivity extends Activity
 
         db.close();
 
-        imgAdd.setOnClickListener(new View.OnClickListener() {
+        imgAdd.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {

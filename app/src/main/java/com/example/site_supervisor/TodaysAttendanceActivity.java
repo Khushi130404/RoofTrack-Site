@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DailyAttendanceActivity extends Activity
+public class TodaysAttendanceActivity extends Activity
 {
     TextView tvDate;
     List<WorkerAttendancePojo> worker;

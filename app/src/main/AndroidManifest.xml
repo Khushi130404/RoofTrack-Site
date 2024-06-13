@@ -28,7 +28,7 @@
             android:name=".PreviousAttendanceActivity"
             android:exported="false" />
         <activity
-            android:name=".DailyAttendanceActivity"
+            android:name=".TodaysAttendanceActivity"
             android:exported="false" />
         <activity
             android:name=".DailyProjectDetailsActivity"
