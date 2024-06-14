@@ -59,7 +59,7 @@
         >
 
         <TextView
-            android:text="Sr\nNo"
+            android:text=""
             android:gravity="center"
             style="@style/head_text"
             android:layout_width="0dp"

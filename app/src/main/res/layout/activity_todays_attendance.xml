@@ -86,7 +86,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:text="In\nTime"
+            android:text="In"
             style="@style/head_text"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -94,7 +94,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:text="Out\nTime"
+            android:text="Out"
             style="@style/head_text"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -116,9 +116,7 @@
             android:layout_weight="0.5"
             ></TextView>
 
-
     </LinearLayout>
-
 
     <ListView
         android:id="@+id/listAttendance"
