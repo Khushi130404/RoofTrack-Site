@@ -7,12 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ public class PreviousAttendanceActivity extends Activity
     String path = dbPath+dbName;
     ListView listAttendance;
     ImageView imgAdd;
+    private PopupMenu pop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +104,34 @@ public class PreviousAttendanceActivity extends Activity
         EditText etRate = popupView.findViewById(R.id.etRate);
         Button btAdd = popupView.findViewById(R.id.btAdd);
 
+
+        etPresent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if (pop == null)
+                {
+                    presentPopupMenu(v,etInTime,etOutTime);
+                }
+                return true;
+            }
+        });
+
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        Cursor cur_srn = db.rawQuery("select Max(srno) from daily_atten where ProjectId = "+getIntent().getIntExtra("projectId",0),null);
+        cur_srn.moveToFirst();
+        int srno = cur_srn.getInt(0)+1;
+        etSrno.setText(""+srno);
+        db.close();
+
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -123,6 +155,16 @@ public class PreviousAttendanceActivity extends Activity
                 work.setSrno(Integer.parseInt(etSrno.getText().toString()));
                 work.setName(etName.getText().toString());
                 work.setPreset(etPresent.getText().toString());
+
+                if(etInTime.getText().toString().equals(""))
+                {
+                    etInTime.setText("00:00");
+                }
+                if(etOutTime.getText().toString().equals(""))
+                {
+                    etOutTime.setText("00:00");
+                }
+
                 work.setInTime(etInTime.getText().toString());
                 work.setOutTime(etOutTime.getText().toString());
                 work.setRate(Double.parseDouble(etRate.getText().toString()));
@@ -161,4 +203,41 @@ public class PreviousAttendanceActivity extends Activity
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
 
+    private void presentPopupMenu(View v, EditText etIn, EditText etOut)
+    {
+        pop = new PopupMenu(getApplicationContext(),v);
+        pop.getMenuInflater().inflate(R.menu.popup_present,pop.getMenu());
+
+        pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item)
+            {
+                EditText et = v.findViewById(R.id.etPresent);
+
+                if(item.getTitle().toString().equals("Present"))
+                {
+                    et.setText("P");
+                }
+                else
+                {
+                    et.setText("A");
+
+                    etIn.setText("00:00");
+                    etOut.setText("00:00");
+                }
+                return true;
+            }
+        });
+
+        pop.setOnDismissListener(new PopupMenu.OnDismissListener()
+        {
+            @Override
+            public void onDismiss(PopupMenu menu)
+            {
+                pop = null;
+            }
+        });
+
+        pop.show();
+    }
 }

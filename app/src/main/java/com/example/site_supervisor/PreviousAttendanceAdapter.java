@@ -3,12 +3,15 @@ package com.example.site_supervisor;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.List;
@@ -23,6 +26,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
+    private PopupMenu pop;
 
     public PreviousAttendanceAdapter(Context cont, int resource, List worker)
     {
@@ -72,7 +76,20 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
             imgEdit.setImageResource(R.drawable.done);
         }
 
-        imgEdit.setOnClickListener(new View.OnClickListener() {
+        et[2].setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if (pop == null)
+                {
+                    presentPopupMenu(v);
+                }
+                return true;
+            }
+        });
+
+        imgEdit.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 if(!work.getEditable())
@@ -90,7 +107,6 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                 }
                 else
                 {
-
                     try
                     {
                         db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
@@ -117,8 +133,6 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                     updateQuery+="rate = "+worker.get(position).getRate()+" ";
                     updateQuery+="where id = "+work.getId();
 
-                    //Toast.makeText(cont,updateQuery,Toast.LENGTH_LONG).show();
-
                     try
                     {
                         db.execSQL(updateQuery);
@@ -130,7 +144,6 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                         Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
 
-
                     for(int i=0; i<et.length; i++)
                     {
                         et[i].setEnabled(false);
@@ -138,10 +151,43 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                         et[i].setFocusableInTouchMode(false);
                         et[i].setClickable(false);
                     }
+                    et[2].setClickable(true);
                 }
             }
         });
 
         return view;
+    }
+
+    private void presentPopupMenu(View v)
+    {
+        pop = new PopupMenu(cont,v);
+        pop.getMenuInflater().inflate(R.menu.popup_present,pop.getMenu());
+
+        pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item)
+            {
+                EditText et = v.findViewById(R.id.etPresent);
+
+                if(item.getTitle().toString().equals("Present"))
+                {
+                    et.setText("P");
+                }
+                else
+                {
+                    et.setText("A");
+                }
+                return true;
+            }
+        });
+        pop.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu)
+            {
+                pop = null;
+            }
+        });
+        pop.show();
     }
 }
