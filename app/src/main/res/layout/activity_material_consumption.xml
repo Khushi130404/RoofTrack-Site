@@ -64,16 +64,16 @@
             style="@style/head_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.2"
             ></TextView>
 
         <TextView
-            android:text="Assembly\nMark"
+            android:text="Assembly Mark"
             android:layout_width="0dp"
             style="@style/head_text"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.8"
             ></TextView>
 
         <TextView

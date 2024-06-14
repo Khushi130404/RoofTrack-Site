@@ -133,8 +133,6 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                     updateQuery+="rate = "+worker.get(position).getRate()+" ";
                     updateQuery+="where id = "+work.getId();
 
-                    //Toast.makeText(cont,updateQuery,Toast.LENGTH_LONG).show();
-
                     try
                     {
                         db.execSQL(updateQuery);
