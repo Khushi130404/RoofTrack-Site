@@ -20,7 +20,7 @@
         android:inputType="none"
         android:background="@drawable/et_box"
         style="@style/list_text"
-        android:layout_weight="0.5"
+        android:layout_weight="0.3"
         ></EditText>
 
 
@@ -51,7 +51,7 @@
         android:inputType="none"
         android:background="@drawable/et_box"
         style="@style/list_text"
-        android:layout_weight="0.5"
+        android:layout_weight="1.1"
         ></EditText>
 
     <EditText
@@ -65,7 +65,7 @@
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:inputType="none"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         ></EditText>
 
     <EditText
@@ -79,7 +79,7 @@
         android:inputType="none"
         android:background="@drawable/et_box"
         style="@style/list_text"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         ></EditText>
 
     <EditText
@@ -93,7 +93,7 @@
         android:inputType="none"
         android:background="@drawable/et_box"
         style="@style/list_text"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         ></EditText>
 
 

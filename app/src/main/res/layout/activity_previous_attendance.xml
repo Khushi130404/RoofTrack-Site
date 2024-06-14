@@ -62,10 +62,10 @@
 
         <TextView
             android:layout_width="0dp"
-            android:text="Sr\nNo"
+            android:text=""
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             ></TextView>
 
 
@@ -82,23 +82,23 @@
             android:text="Present"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="1.1"
             ></TextView>
 
         <TextView
             android:layout_width="0dp"
-            android:text="In\nTime"
+            android:text="In"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             ></TextView>
 
         <TextView
             android:layout_width="0dp"
-            android:text="Out\nTime"
+            android:text="Out"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             ></TextView>
 
         <TextView
@@ -106,7 +106,7 @@
             android:text="Rate"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             ></TextView>
 
 
@@ -114,7 +114,7 @@
             android:layout_width="0dp"
             style="@style/head_text"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             ></TextView>
 
 
