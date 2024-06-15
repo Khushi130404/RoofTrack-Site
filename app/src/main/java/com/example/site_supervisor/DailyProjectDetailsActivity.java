@@ -1,6 +1,7 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,8 +16,11 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class DailyProjectDetailsActivity extends Activity
 {
@@ -29,6 +33,9 @@ public class DailyProjectDetailsActivity extends Activity
     SpinnerAdapter spinnerAdapter;
     Button btAttendance, btWorkReport, btPrevAttendance;
     DatePicker date;
+    TextView tvDate;
+    private DatePickerDialog datePickerDialog;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,9 +49,12 @@ public class DailyProjectDetailsActivity extends Activity
         btAttendance = findViewById(R.id.btAttendance);
         btWorkReport = findViewById(R.id.btWorkReport);
         btPrevAttendance = findViewById(R.id.btPrevAttendance);
-        date = findViewById(R.id.date);
+        tvDate = findViewById(R.id.tvDate);
 
         path = dbPath+dbName;
+
+        calendar = Calendar.getInstance();
+        setDateToToday();
 
         try
         {
@@ -66,6 +76,8 @@ public class DailyProjectDetailsActivity extends Activity
         db.close();
         spinnerAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,projectName);
         spProject.setAdapter(spinnerAdapter);
+
+        tvDate.setOnClickListener(v -> showDatePickerDialog());
 
         spProject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,7 +126,7 @@ public class DailyProjectDetailsActivity extends Activity
                 cur.moveToFirst();
 
                 Intent i = new Intent(getApplicationContext(), PreviousAttendanceActivity.class);
-                i.putExtra("date",""+addZero(date.getDayOfMonth())+"-"+addZero((date.getMonth()+1))+"-"+date.getYear());
+                i.putExtra("date",tvDate.getText().toString());
                 i.putExtra("projectId",cur.getInt(0));
                 db.close();
                 startActivity(i);
@@ -145,7 +157,8 @@ public class DailyProjectDetailsActivity extends Activity
             }
         });
 
-        btWorkReport.setOnClickListener(new View.OnClickListener() {
+        btWorkReport.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {
@@ -165,11 +178,46 @@ public class DailyProjectDetailsActivity extends Activity
 
                 Intent i = new Intent(getApplicationContext(), MaterialConsumptionActivity.class);
                 i.putExtra("projectId",cur.getInt(0));
-                i.putExtra("date",""+addZero(date.getDayOfMonth())+"-"+addZero((date.getMonth()+1))+"-"+date.getYear());
+                i.putExtra("date",tvDate.getText().toString());
                 startActivity(i);
             }
         });
     }
+
+    private void setDateToToday()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        tvDate.setText(sdf.format(calendar.getTime()));
+    }
+
+    private void updateDateInView()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        tvDate.setText(sdf.format(calendar.getTime()));
+    }
+
+    private void showDatePickerDialog()
+    {
+        datePickerDialog = new DatePickerDialog(DailyProjectDetailsActivity.this,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+    private final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
+    {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
+        {
+            date = datePickerDialog.getDatePicker();
+            tvDate.setText(""+addZero(date.getDayOfMonth())+"-"+addZero((date.getMonth()+1))+"-"+date.getYear());
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        }
+    };
 
     private String addZero(int date)
     {
