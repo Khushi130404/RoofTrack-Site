@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         ></TextView>
 
     <LinearLayout
@@ -27,7 +27,7 @@
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6.5"
         >
 
         <LinearLayout
@@ -35,7 +35,7 @@
             android:weightSum="3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             >
 
             <TextView
@@ -62,7 +62,7 @@
             android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             >
 
             <TextView
@@ -88,7 +88,7 @@
             android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             >
 
             <TextView
@@ -109,14 +109,15 @@
 
         </LinearLayout>
 
-        <DatePicker
-            android:id="@+id/date"
-            style="@style/datePicker_style"
-            android:background="#C8B6A6"
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:gravity="center"
+            android:textSize="30dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9"
-            ></DatePicker>
+            android:layout_weight="3"
+            ></TextView>
 
         <LinearLayout
             android:orientation="vertical"
@@ -125,7 +126,7 @@
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="3.5"
             >
 
             <Button
@@ -141,9 +142,9 @@
             <Button
                 android:id="@+id/btWorkReport"
                 android:text="Daily Work Report"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 style="@style/button_style"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/button3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
