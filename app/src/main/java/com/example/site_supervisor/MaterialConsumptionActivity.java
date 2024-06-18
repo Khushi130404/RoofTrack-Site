@@ -116,41 +116,60 @@ public class MaterialConsumptionActivity extends Activity
                     Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                 }
 
-                Cursor cur = db.rawQuery("select Max(id) from tbl_billofmaterialdetails",null);
-                cur.moveToFirst();
-                int id = cur.getInt(0)+1;
-
-                cur = db.rawQuery("select name from tbl_billofmaterialdetails where lower(assembly_mark) = '"+etAssemblyMark.getText().toString().toLowerCase()+"'",null);
-                cur.moveToFirst();
-                MaterialConsumptionPojo mcp = new MaterialConsumptionPojo();
-                mcp.setId(id);
-                mcp.setAssemblyMark(etAssemblyMark.getText().toString().toUpperCase());
-                mcp.setName(cur.getString(0));
-                mcp.setQty(Integer.parseInt(etQty.getText().toString()));
-
-                ContentValues values = new ContentValues();
-                values.put("id", id);
-                values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-                values.put("assembly_mark",mcp.getAssemblyMark());
-                values.put("name",mcp.getName());
-                values.put("qty",mcp.getQty());
-                values.put("date",getIntent().getStringExtra("date"));
-
-                long newRowId = db.insert("tbl_billofmaterialdetails", null, values);
-
-                if (newRowId == -1)
+                try
                 {
-                    Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    Cursor cur = db.rawQuery("select Max(id) from tbl_billofmaterialdetails",null);
+                    cur.moveToFirst();
+                    int id = cur.getInt(0)+1;
+
+                    cur = db.rawQuery("select name from tbl_billofmaterialdetails where lower(assembly_mark) = '"+etAssemblyMark.getText().toString().toLowerCase()+"'",null);
+                    cur.moveToFirst();
+                    MaterialConsumptionPojo mcp = new MaterialConsumptionPojo();
+                    mcp.setId(id);
+                    if(etAssemblyMark.getText().toString().equals(""))
+                    {
+                        throw new EmptyStringException();
+                    }
+                    mcp.setAssemblyMark(etAssemblyMark.getText().toString().toUpperCase());
+                    mcp.setName(cur.getString(0));
+                    mcp.setQty(Integer.parseInt(etQty.getText().toString()));
+
+                    ContentValues values = new ContentValues();
+                    values.put("id", id);
+                    values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+                    values.put("assembly_mark",mcp.getAssemblyMark());
+                    values.put("name",mcp.getName());
+                    values.put("qty",mcp.getQty());
+                    values.put("date",getIntent().getStringExtra("date"));
+
+                    long newRowId = db.insert("tbl_billofmaterialdetails", null, values);
+
+                    if (newRowId == -1)
+                    {
+                        Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    }
+
+                    db.close();
+                    material.add(mcp);
+
+                    popupWindow.dismiss();
                 }
-                else
+                catch (NumberFormatException nfe)
                 {
-                    Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
                 }
-
-                db.close();
-                material.add(mcp);
-
-                popupWindow.dismiss();
+                catch (EmptyStringException ese)
+                {
+                    Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Assembly mark doesn't exist...!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);

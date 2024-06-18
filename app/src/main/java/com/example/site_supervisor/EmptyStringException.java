@@ -6,7 +6,7 @@ public class EmptyStringException extends Exception
 
     EmptyStringException()
     {
-        errCode = "Please enter some value..!";
+        errCode = "Please provide a value..!";
     }
     @Override
     public String toString()

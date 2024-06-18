@@ -153,7 +153,7 @@ public class BoltListActivity extends Activity
                 }
                 catch (NumberFormatException nfe)
                 {
-                    Toast.makeText(getApplicationContext(),"Please enter valid quantity...!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
                 }
                 catch (EmptyStringException ese)
                 {

@@ -127,7 +127,7 @@ public class BoltListAdapter extends ArrayAdapter
                     }
                     catch (NumberFormatException nfe)
                     {
-                        Toast.makeText(cont,"Please enter valid quantity...!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cont,"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
                     }
                     catch (EmptyStringException ese)
                     {
