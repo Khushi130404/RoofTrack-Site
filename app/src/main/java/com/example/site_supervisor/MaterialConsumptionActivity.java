@@ -60,7 +60,7 @@ public class MaterialConsumptionActivity extends Activity
             Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
 
-        Cursor cur = db.rawQuery("select id,assembly_mark,name,net_weight from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and date like '%"+getIntent().getStringExtra("date")+"%'",null);
+        Cursor cur = db.rawQuery("select id,assembly_mark,name,qty from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and date like '%"+getIntent().getStringExtra("date")+"%'",null);
 
         while (cur.moveToNext())
         {
@@ -68,7 +68,7 @@ public class MaterialConsumptionActivity extends Activity
             mcp.setId(cur.getInt(0));
             mcp.setAssemblyMark(cur.getString(1));
             mcp.setName(cur.getString(2));
-            mcp.setWeight(cur.getDouble(3));
+            mcp.setQty(cur.getInt(3));
             material.add(mcp);
         }
 
@@ -126,14 +126,14 @@ public class MaterialConsumptionActivity extends Activity
                 mcp.setId(id);
                 mcp.setAssemblyMark(etAssemblyMark.getText().toString().toUpperCase());
                 mcp.setName(cur.getString(0));
-                mcp.setWeight(Double.parseDouble(etWeight.getText().toString()));
+                mcp.setQty(Integer.parseInt(etWeight.getText().toString()));
 
                 ContentValues values = new ContentValues();
                 values.put("id", id);
                 values.put("ProjectID", getIntent().getIntExtra("projectId",0));
                 values.put("assembly_mark",mcp.getAssemblyMark());
                 values.put("name",mcp.getName());
-                values.put("net_weight",mcp.getWeight());
+                values.put("qty",mcp.getQty());
                 values.put("date",getIntent().getStringExtra("date"));
 
                 long newRowId = db.insert("tbl_billofmaterialdetails", null, values);

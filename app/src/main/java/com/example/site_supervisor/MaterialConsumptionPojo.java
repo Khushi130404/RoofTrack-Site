@@ -5,7 +5,7 @@ public class MaterialConsumptionPojo
     int id;
     String assemblyMark;
     String name;
-    Double weight;
+    int qty;
     boolean isEditable = false;
 
     public int getId() {
@@ -32,19 +32,21 @@ public class MaterialConsumptionPojo
         this.name = name;
     }
 
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
     public boolean getEditable() {
         return isEditable;
     }
 
     public void setEditable(boolean editable) {
         isEditable = editable;
+    }
+
+    public int getQty()
+    {
+        return qty;
+    }
+
+    public void setQty(int qty)
+    {
+        this.qty = qty;
     }
 }
