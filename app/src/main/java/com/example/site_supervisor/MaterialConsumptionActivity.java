@@ -99,7 +99,7 @@ public class MaterialConsumptionActivity extends Activity
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         EditText etAssemblyMark = popupView.findViewById(R.id.etAssemblyMark);
-        EditText etWeight = popupView.findViewById(R.id.etWeight);
+        EditText etQty = popupView.findViewById(R.id.etQty);
         Button btAdd = popupView.findViewById(R.id.btAdd);
 
         btAdd.setOnClickListener(new View.OnClickListener()
@@ -126,7 +126,7 @@ public class MaterialConsumptionActivity extends Activity
                 mcp.setId(id);
                 mcp.setAssemblyMark(etAssemblyMark.getText().toString().toUpperCase());
                 mcp.setName(cur.getString(0));
-                mcp.setQty(Integer.parseInt(etWeight.getText().toString()));
+                mcp.setQty(Integer.parseInt(etQty.getText().toString()));
 
                 ContentValues values = new ContentValues();
                 values.put("id", id);
@@ -155,5 +155,4 @@ public class MaterialConsumptionActivity extends Activity
         });
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
-
 }

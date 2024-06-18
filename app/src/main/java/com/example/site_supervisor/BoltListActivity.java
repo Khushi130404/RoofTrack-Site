@@ -118,33 +118,47 @@ public class BoltListActivity extends Activity
                 cur.moveToFirst();
                 int id = cur.getInt(0)+1;
 
-                BoltListPojo blp = new BoltListPojo();
-                blp.setId(id);
-                blp.setType(etBolt.getText().toString().toUpperCase());
-                blp.setQty(Integer.parseInt(etQty.getText().toString()));
-
-                ContentValues values = new ContentValues();
-                values.put("id", id);
-                values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-                values.put("type",blp.getType());
-                values.put("qty",blp.getQty());
-                values.put("date",getIntent().getStringExtra("date"));
-
-                long newRowId = db.insert("tbl_boltlist", null, values);
-
-                if (newRowId == -1)
+                try
                 {
-                    Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    BoltListPojo blp = new BoltListPojo();
+                    blp.setId(id);
+                    if(etBolt.getText().toString().equals(""))
+                    {
+                        throw new EmptyStringException();
+                    }
+                    blp.setType(etBolt.getText().toString().toUpperCase());
+                    blp.setQty(Integer.parseInt(etQty.getText().toString()));
+
+                    ContentValues values = new ContentValues();
+                    values.put("id", id);
+                    values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+                    values.put("type",blp.getType());
+                    values.put("qty",blp.getQty());
+                    values.put("date",getIntent().getStringExtra("date"));
+
+                    long newRowId = db.insert("tbl_boltlist", null, values);
+
+                    if (newRowId == -1)
+                    {
+                        Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    }
+
+                    db.close();
+                    bolt.add(blp);
+                    popupWindow.dismiss();
                 }
-                else
+                catch (NumberFormatException nfe)
                 {
-                    Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Please enter valid quantity...!",Toast.LENGTH_SHORT).show();
                 }
-
-                db.close();
-                bolt.add(blp);
-
-                popupWindow.dismiss();
+                catch (EmptyStringException ese)
+                {
+                    Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
