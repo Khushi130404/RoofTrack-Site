@@ -48,6 +48,7 @@ public class DailyProjectDetailsActivity extends Activity
         tvPONo = findViewById(R.id.tvPONo);
         btAttendance = findViewById(R.id.btAttendance);
         btWorkReport = findViewById(R.id.btWorkReport);
+        btBoltList = findViewById(R.id.btBoltList);
         btPrevAttendance = findViewById(R.id.btPrevAttendance);
         tvDate = findViewById(R.id.tvDate);
 
