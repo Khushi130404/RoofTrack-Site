@@ -8,29 +8,28 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class MaterialConsumptionAdapter extends ArrayAdapter
+public class BoltListAdapter extends ArrayAdapter
 {
     Context cont;
     int resource;
-    List<MaterialConsumptionPojo> material;
+    List<BoltListPojo> bolt;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
 
-    public MaterialConsumptionAdapter(Context cont, int resource,List material)
+    public BoltListAdapter(@NonNull Context cont, int resource, @NonNull List<BoltListPojo> bolt)
     {
-        super(cont, resource, material);
+        super(cont, resource, bolt);
         this.cont = cont;
         this.resource = resource;
-        this.material = material;
+        this.bolt = bolt;
     }
 
     public View getView(final int position, View convetView, ViewGroup parent)
@@ -40,8 +39,8 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
 
         ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
-        EditText et[] = new EditText[4];
-        int id[] = {R.id.etPosition,R.id.etMark,R.id.etName,R.id.etQty};
+        EditText et[] = new EditText[3];
+        int id[] = {R.id.etPosition,R.id.etBolt,R.id.etQty};
 
         for(int i=0; i<id.length; i++)
         {
@@ -49,11 +48,10 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
         }
 
         et[0].setText(""+(position+1));
-        et[1].setText(material.get(position).getAssemblyMark());
-        et[2].setText(material.get(position).getName());
-        et[3].setText(""+material.get(position).getQty());
+        et[1].setText(bolt.get(position).getType());
+        et[2].setText(""+bolt.get(position).getQty());
 
-        if(material.get(position).getEditable())
+        if(bolt.get(position).getEditable())
         {
             for(int i=1; i<et.length; i++)
             {
@@ -76,12 +74,13 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
 
             imgEdit.setImageResource(R.drawable.edit);
         }
-
-        imgEdit.setOnClickListener(new View.OnClickListener() {
+    
+        imgEdit.setOnClickListener(new View.OnClickListener() 
+        {
             @Override
-            public void onClick(View v)
+            public void onClick(View v) 
             {
-                if(material.get(position).getEditable())
+                if(bolt.get(position).getEditable())
                 {
                     try
                     {
@@ -92,15 +91,13 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                     }
 
-                    material.get(position).setEditable(false);
-                    material.get(position).setAssemblyMark(et[1].getText().toString());
-                    material.get(position).setName(et[2].getText().toString());
-                    material.get(position).setQty(Integer.parseInt(et[3].getText().toString()));
+                    bolt.get(position).setEditable(false);
+                    bolt.get(position).setType(et[1].getText().toString());
+                    bolt.get(position).setQty(Integer.parseInt(et[2].getText().toString()));
 
-                    String updateQuery = "update tbl_billofmaterialdetails set assembly_mark = '"+material.get(position).getAssemblyMark()+"', ";
-                    updateQuery += "name = '"+material.get(position).getName()+"',";
-                    updateQuery += "qty = "+material.get(position).getQty();
-                    updateQuery += " where id = "+material.get(position).getId();
+                    String updateQuery = "update tbl_billofboltdetails set type = '"+bolt.get(position).getType()+"', ";
+                    updateQuery += "qty = "+bolt.get(position).getQty();
+                    updateQuery += " where id = "+bolt.get(position).getId();
 
                     try
                     {
@@ -121,7 +118,6 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         et[i].setClickable(false);
                     }
                     imgEdit.setImageResource(R.drawable.edit);
-
                 }
                 else
                 {
@@ -133,7 +129,7 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         et[i].setClickable(true);
                     }
 
-                    material.get(position).setEditable(true);
+                    bolt.get(position).setEditable(true);
                     imgEdit.setImageResource(R.drawable.done);
                 }
             }

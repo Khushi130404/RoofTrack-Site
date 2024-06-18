@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:background="@drawable/background_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BoltListActivity">
+
+    <TextView
+        android:text="Bolt List"
+        android:gravity="center"
+        style="@style/company_text"
+        android:textSize="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_weight="0.5"
+        >
+
+        <ImageView
+            android:id="@+id/imgAdd"
+            android:src="@drawable/add_material"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:text="Date : "
+            android:gravity="center|end"
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:weightSum="3.5"
+        android:layout_weight="0.8"
+        >
+
+        <TextView
+            android:text="Sr No"
+            android:gravity="center"
+            style="@style/head_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            ></TextView>
+
+        <TextView
+            android:text="Bolt Type"
+            android:layout_width="0dp"
+            style="@style/head_text"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            ></TextView>
+
+        <TextView
+            android:text="Qyt(No.)"
+            android:gravity="center"
+            android:layout_width="0dp"
+            style="@style/head_text"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></TextView>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listBolt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.7"
+        ></ListView>
+
+</LinearLayout>

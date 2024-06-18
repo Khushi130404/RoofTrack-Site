@@ -31,7 +31,7 @@ public class DailyProjectDetailsActivity extends Activity
     public static String dbName= "Site_Supervisor.db";
     String path;
     SpinnerAdapter spinnerAdapter;
-    Button btAttendance, btWorkReport, btPrevAttendance;
+    Button btAttendance, btWorkReport, btPrevAttendance, btBoltList;
     DatePicker date;
     TextView tvDate;
     private DatePickerDialog datePickerDialog;
@@ -48,6 +48,7 @@ public class DailyProjectDetailsActivity extends Activity
         tvPONo = findViewById(R.id.tvPONo);
         btAttendance = findViewById(R.id.btAttendance);
         btWorkReport = findViewById(R.id.btWorkReport);
+        btBoltList = findViewById(R.id.btBoltList);
         btPrevAttendance = findViewById(R.id.btPrevAttendance);
         tvDate = findViewById(R.id.tvDate);
 
@@ -153,6 +154,32 @@ public class DailyProjectDetailsActivity extends Activity
                 Intent i = new Intent(getApplicationContext(), TodaysAttendanceActivity.class);
                 i.putExtra("projectId",cur.getInt(0));
                 db.close();
+                startActivity(i);
+            }
+        });
+
+        btBoltList.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READONLY);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                Cursor cur = db.rawQuery("select ProjectID from tbl_ProjectSite where ProjectName = '"+spProject.getSelectedItem().toString()+"'",null);
+                cur.moveToFirst();
+
+                db.close();
+
+                Intent i = new Intent(getApplicationContext(), BoltListActivity.class);
+                i.putExtra("projectId",cur.getInt(0));
+                i.putExtra("date",tvDate.getText().toString());
                 startActivity(i);
             }
         });
