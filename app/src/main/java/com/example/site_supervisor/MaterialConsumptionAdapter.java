@@ -38,14 +38,10 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
         LayoutInflater inflater = LayoutInflater.from(cont);
         View view = inflater.inflate(resource,null,false);
 
-//        EditText etPosition = view.findViewById(R.id.tvPosition);
-//        EditText etMark = view.findViewById(R.id.tvMark);
-//        EditText etName = view.findViewById(R.id.tvName);
-//        EditText etWeight = view.findViewById(R.id.tvWeight);
         ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
         EditText et[] = new EditText[4];
-        int id[] = {R.id.etPosition,R.id.etMark,R.id.etName,R.id.etWeight};
+        int id[] = {R.id.etPosition,R.id.etMark,R.id.etName,R.id.etQty};
 
         for(int i=0; i<id.length; i++)
         {
@@ -55,7 +51,7 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
         et[0].setText(""+(position+1));
         et[1].setText(material.get(position).getAssemblyMark());
         et[2].setText(material.get(position).getName());
-        et[3].setText(material.get(position).getWeight().toString());
+        et[3].setText(""+material.get(position).getQty());
 
         if(material.get(position).getEditable())
         {
@@ -66,7 +62,6 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                 et[i].setFocusableInTouchMode(true);
                 et[i].setClickable(true);
             }
-
             imgEdit.setImageResource(R.drawable.done);
         }
         else
@@ -100,11 +95,11 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                     material.get(position).setEditable(false);
                     material.get(position).setAssemblyMark(et[1].getText().toString());
                     material.get(position).setName(et[2].getText().toString());
-                    material.get(position).setWeight(Double.parseDouble(et[3].getText().toString()));
+                    material.get(position).setQty(Integer.parseInt(et[3].getText().toString()));
 
                     String updateQuery = "update tbl_billofmaterialdetails set assembly_mark = '"+material.get(position).getAssemblyMark()+"', ";
                     updateQuery += "name = '"+material.get(position).getName()+"',";
-                    updateQuery += "net_weight = "+material.get(position).getWeight();
+                    updateQuery += "qty = "+material.get(position).getQty();
                     updateQuery += " where id = "+material.get(position).getId();
 
                     try

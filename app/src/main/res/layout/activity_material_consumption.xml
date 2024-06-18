@@ -86,7 +86,7 @@
             ></TextView>
 
         <TextView
-            android:text="Weight"
+            android:text="Qyt(No.)"
             android:gravity="center"
             android:layout_width="0dp"
             style="@style/head_text"
