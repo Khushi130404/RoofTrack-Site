@@ -1,6 +1,8 @@
 package com.example.site_supervisor;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,7 @@ public class SetImageAdapter extends ArrayAdapter
 {
     Context cont;
     int resource;
-    List<Uri> image;
+    List<byte[]> image;
 
     public SetImageAdapter(@NonNull Context cont, int resource, @NonNull List image)
     {
@@ -32,7 +34,8 @@ public class SetImageAdapter extends ArrayAdapter
         View view = inflater.inflate(resource,null,false);
 
         ImageView img = view.findViewById(R.id.img);
-        img.setImageURI(image.get(position));
+        Bitmap bitmap = BitmapFactory.decodeByteArray(image.get(position),0,image.get(position).length);
+        img.setImageBitmap(bitmap);
         return view;
     }
 }

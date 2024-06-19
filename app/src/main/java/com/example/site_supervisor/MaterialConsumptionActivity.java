@@ -1,10 +1,13 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,8 +31,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,6 +92,7 @@ public class MaterialConsumptionActivity extends Activity
             material.add(mcp);
         }
 
+        cur.close();
         MaterialConsumptionAdapter materialAdapter = new MaterialConsumptionAdapter(getApplicationContext(),R.layout.material_consumption_adapter,material);
         listMaterial.setAdapter(materialAdapter);
 
@@ -115,28 +122,12 @@ public class MaterialConsumptionActivity extends Activity
             @Override
             public void onClick(View v)
             {
-                File photoFile = null;
-                try
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
                 {
-                    photoFile = createImageFile();
-                }
-                catch (IOException ex)
-                {
-                    ex.printStackTrace();
-                }
-
-                if (photoFile != null)
-                {
-                    imageUri = FileProvider.getUriForFile(getApplicationContext(),
-                            "com.your.package.name.fileprovider",
-                            photoFile);
-
-                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                     startActivityForResult(takePictureIntent, 101);
                 }
             }
-
         });
 
         imgUploaded.setOnClickListener(new View.OnClickListener()
@@ -144,9 +135,45 @@ public class MaterialConsumptionActivity extends Activity
             @Override
             public void onClick(View v)
             {
-
+                showPopupImage(v);
             }
         });
+    }
+
+    private void showPopupImage(View view)
+    {
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_image, null);
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true;
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        List<byte[]> image = new ArrayList<>();
+
+        Cursor cur = db.rawQuery("select image from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
+        while(cur.moveToNext())
+        {
+            image.add(cur.getBlob(0));
+        }
+
+        cur.close();
+        db.close();
+        ListView lvImage = popupView.findViewById(R.id.lvImage);
+
+        SetImageAdapter sia = new SetImageAdapter(getApplicationContext(),R.layout.set_image_adapter,image);
+        lvImage.setAdapter(sia);
+
+        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
 
     private void showPopupMenu(View view)
@@ -236,54 +263,14 @@ public class MaterialConsumptionActivity extends Activity
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
 
-    private void dispatchTakePictureIntent()
-    {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null)
-        {
-            File photoFile = null;
-            try
-            {
-                photoFile = createImageFile();
-            }
-            catch (IOException ex)
-            {
-                ex.printStackTrace();
-            }
-
-            if (photoFile != null)
-            {
-                imageUri = FileProvider.getUriForFile(this,
-                        "com.your.package.name.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(takePictureIntent, 101);
-            }
-        }
-    }
-
-
-
-    private File createImageFile() throws IOException
-    {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File imageFile = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
-        return imageFile;
-    }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
         if(reqCode==101 && resCode==RESULT_OK)
         {
-            String imageUri="";
-            if (imageUri != null)
-            {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
                 try
                 {
                     db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
@@ -304,7 +291,7 @@ public class MaterialConsumptionActivity extends Activity
                 ContentValues values = new ContentValues();
                 values.put("id", id);
                 values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-                values.put("image",imageUri);
+                values.put("image",bitmapToByteArray(imageBitmap));
                 values.put("date",getIntent().getStringExtra("date"));
 
                 long newRowId = db.insert("tbl_daily_image", null, values);
@@ -319,11 +306,22 @@ public class MaterialConsumptionActivity extends Activity
                 }
 
                 db.close();
-            }
+
         }
         else if(reqCode==111 && resCode==RESULT_OK)
         {
-            Uri imgPath = data.getData();
+            Uri imageUri = data.getData();
+            Bitmap imageBitmap = null;
+            try
+            {
+                ContentResolver contentResolver = getContentResolver();
+                InputStream inputStream = contentResolver.openInputStream(imageUri);
+                 imageBitmap = BitmapFactory.decodeStream(inputStream);
+            }
+            catch (FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
 
             try
             {
@@ -345,7 +343,7 @@ public class MaterialConsumptionActivity extends Activity
             ContentValues values = new ContentValues();
             values.put("id", id);
             values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-            values.put("image",imgPath.toString());
+            values.put("image",bitmapToByteArray(imageBitmap));
             values.put("date",getIntent().getStringExtra("date"));
 
             long newRowId = db.insert("tbl_daily_image", null, values);
@@ -361,5 +359,12 @@ public class MaterialConsumptionActivity extends Activity
 
             db.close();
         }
+    }
+
+    private byte[] bitmapToByteArray(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
     }
 }
