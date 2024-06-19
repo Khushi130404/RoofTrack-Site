@@ -57,6 +57,7 @@ public class SiteSupervisorProfileActivity extends Activity
         }
 
         share = getSharedPreferences("siteSupervisor",MODE_PRIVATE);
+        tvCompany.setText(share.getString("company","Null"));
 
         try
         {
@@ -109,6 +110,12 @@ public class SiteSupervisorProfileActivity extends Activity
                 {
                     Toast.makeText(getApplicationContext(),"Database does'nt exists",Toast.LENGTH_SHORT).show();
                 }
+
+                SharedPreferences.Editor edit = share.edit();
+
+                edit.putString("company",et[6].getText().toString());
+                tvCompany.setText(et[6].getText().toString());
+                edit.apply();
 
                 String updateQuery = "update crm_user_registration set ";
 

@@ -11,17 +11,18 @@
     </style>
 
     <style name="site_text">
-        <item name="android:textColor">#12372A</item>
+        <item name="android:textColor">#2E4D4A</item>
     </style>
 
     <style name="daily_text">
-        <item name="android:textColor">@color/text</item>
+        <item name="android:textColor">#5C3C3B</item>
     </style>
 
     <style name="company_text">
         <item name="android:textSize">25dp</item>
-        <item name="android:textColor">@color/text</item>
+        <item name="android:textColor">@color/company</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -38,4 +39,8 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="project_info_text">
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">center|start</item>
+    </style>
 </resources>

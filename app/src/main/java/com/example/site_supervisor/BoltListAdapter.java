@@ -91,33 +91,48 @@ public class BoltListAdapter extends ArrayAdapter
                         Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                     }
 
-                    bolt.get(position).setEditable(false);
-                    bolt.get(position).setType(et[1].getText().toString());
-                    bolt.get(position).setQty(Integer.parseInt(et[2].getText().toString()));
-
-                    String updateQuery = "update tbl_billofboltdetails set type = '"+bolt.get(position).getType()+"', ";
-                    updateQuery += "qty = "+bolt.get(position).getQty();
-                    updateQuery += " where id = "+bolt.get(position).getId();
-
                     try
                     {
-                        db.execSQL(updateQuery);
-                        db.close();
-                        Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
-                    }
-                    catch (Exception e)
-                    {
-                        Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
+                        bolt.get(position).setEditable(false);
+                        if(et[1].getText().toString().equals(""))
+                        {
+                            throw new EmptyStringException();
+                        }
+                        bolt.get(position).setType(et[1].getText().toString().toUpperCase());
+                        bolt.get(position).setQty(Integer.parseInt(et[2].getText().toString()));
 
-                    for(int i=1; i<et.length; i++)
-                    {
-                        et[i].setEnabled(false);
-                        et[i].setFocusable(false);
-                        et[i].setFocusableInTouchMode(false);
-                        et[i].setClickable(false);
+                        String updateQuery = "update tbl_boltlist set type = '"+bolt.get(position).getType()+"', ";
+                        updateQuery += "qty = "+bolt.get(position).getQty();
+                        updateQuery += " where id = "+bolt.get(position).getId();
+
+                        try
+                        {
+                            db.execSQL(updateQuery);
+                            db.close();
+                            Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
+                        for(int i=1; i<et.length; i++)
+                        {
+                            et[i].setEnabled(false);
+                            et[i].setFocusable(false);
+                            et[i].setFocusableInTouchMode(false);
+                            et[i].setClickable(false);
+                        }
+                        imgEdit.setImageResource(R.drawable.edit);
                     }
-                    imgEdit.setImageResource(R.drawable.edit);
+                    catch (NumberFormatException nfe)
+                    {
+                        Toast.makeText(cont,"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
+                    }
+                    catch (EmptyStringException ese)
+                    {
+                        Toast.makeText(cont,ese.toString(),Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {

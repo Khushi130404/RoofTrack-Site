@@ -193,72 +193,83 @@ public class TodaysAttendanceActivity extends Activity
 
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 WorkerAttendancePojo work = new WorkerAttendancePojo();
+
+                try {
+                    db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READWRITE);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
                 try
                 {
-                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+                    Cursor cur = db.rawQuery("select Max(id) from daily_atten",null);
+                    cur.moveToFirst();
+                    int id = cur.getInt(0)+1;
+
+                    if(etName.getText().toString().equals("") || etPresent.getText().toString().equals(""))
+                    {
+                        throw new EmptyStringException();
+                    }
+
+                    work.setId(id);
+                    work.setSrno(Integer.parseInt(etSrno.getText().toString()));
+                    work.setName(etName.getText().toString());
+                    work.setPreset(etPresent.getText().toString());
+
+                    if(etInTime.getText().toString().equals(""))
+                    {
+                        etInTime.setText("00:00");
+                    }
+                    if(etOutTime.getText().toString().equals(""))
+                    {
+                        etOutTime.setText("00:00");
+                    }
+
+                    work.setInTime(etInTime.getText().toString());
+                    work.setOutTime(etOutTime.getText().toString());
+                    work.setRate(Double.parseDouble(etRate.getText().toString()));
+
+                    worker.add(work);
+
+                    ContentValues values = new ContentValues();
+                    values.put("id", id);
+                    values.put("ProjectId", getIntent().getIntExtra("projectId",0));
+                    values.put("atten_date", todayDate);
+                    values.put("e_code", 0);
+                    values.put("e_name", work.getName());
+                    values.put("a_status", work.getPreset());
+                    values.put("in_time", work.getInTime());
+                    values.put("out_time", work.getOutTime());
+                    values.put("srno", work.getSrno());
+                    values.put("rate", work.getRate());
+
+                    long newRowId = db.insert("daily_atten", null, values);
+
+                    if (newRowId == -1)
+                    {
+                        Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    }
+
+                    db.close();
+
+                    popupWindow.dismiss();
                 }
-                catch (Exception e)
+                catch (NumberFormatException nfe)
                 {
-                    Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Rate should be Numeric...!",Toast.LENGTH_SHORT).show();
                 }
-
-                Cursor cur = db.rawQuery("select Max(id) from daily_atten",null);
-                cur.moveToFirst();
-                int id = cur.getInt(0)+1;
-
-                work.setId(id);
-                work.setSrno(Integer.parseInt(etSrno.getText().toString()));
-                work.setName(etName.getText().toString());
-                work.setPreset(etPresent.getText().toString());
-
-                if(etInTime.getText().toString().equals(""))
+                catch (EmptyStringException ese)
                 {
-                    etInTime.setText("00:00");
+                    Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
                 }
-                if(etOutTime.getText().toString().equals(""))
-                {
-                    etOutTime.setText("00:00");
-                }
-
-                work.setInTime(etInTime.getText().toString());
-                work.setOutTime(etOutTime.getText().toString());
-                work.setRate(Double.parseDouble(etRate.getText().toString()));
-
-                worker.add(work);
-
-                ContentValues values = new ContentValues();
-                values.put("id", id);
-                values.put("ProjectId", getIntent().getIntExtra("projectId",0));
-                values.put("atten_date", todayDate);
-                values.put("e_code", 0);
-                values.put("e_name", work.getName());
-                values.put("a_status", work.getPreset());
-                values.put("in_time", work.getInTime());
-                values.put("out_time", work.getOutTime());
-                values.put("srno", work.getSrno());
-                values.put("rate", work.getRate());
-
-                long newRowId = db.insert("daily_atten", null, values);
-
-                if (newRowId == -1)
-                {
-                    Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
-                }
-
-                db.close();
-
-                popupWindow.dismiss();
             }
         });
-
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
 

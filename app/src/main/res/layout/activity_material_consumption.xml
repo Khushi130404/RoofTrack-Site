@@ -28,22 +28,14 @@
         android:layout_weight="0.5"
         >
 
-        <ImageView
-            android:id="@+id/imgAdd"
-            android:src="@drawable/add_material"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            ></ImageView>
-
         <TextView
             android:id="@+id/tvDate"
             android:text="Date : "
             android:gravity="center|end"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="5"
             ></TextView>
 
     </LinearLayout>
@@ -100,7 +92,52 @@
         android:id="@+id/listMaterial"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5.7"
+        android:layout_weight="4.7"
         ></ListView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="4"
+        android:padding="18dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:id="@+id/imgAdd"
+            android:layout_width="0dp"
+            android:src="@drawable/add_material"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+
+        <ImageView
+            android:id="@+id/imgGallery"
+            android:layout_width="0dp"
+            android:src="@drawable/add_material"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/imgCamera"
+            android:layout_width="0dp"
+            android:src="@drawable/add_material"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/imgUploaded"
+            android:layout_width="0dp"
+            android:src="@drawable/add_material"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            ></ImageView>
+
+    </LinearLayout>
 
 </LinearLayout>

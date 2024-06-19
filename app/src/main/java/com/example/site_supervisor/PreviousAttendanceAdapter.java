@@ -51,9 +51,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
         {
             et[i] = view.findViewById(id[i]);
         }
-
-        //Button btUpdate = view.findViewById(R.id.btUpdate);
-
+        
         ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
         et[0].setText(""+work.getSrno());
@@ -117,41 +115,58 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                     }
                     imgEdit.setImageResource(R.drawable.edit);
 
-                    worker.get(position).setEditable(false);
-                    worker.get(position).setSrno(Integer.parseInt(et[0].getText().toString()));
-                    worker.get(position).setName(et[1].getText().toString());
-                    worker.get(position).setPreset(et[2].getText().toString());
-                    worker.get(position).setInTime(et[3].getText().toString());
-                    worker.get(position).setOutTime(et[4].getText().toString());
-                    worker.get(position).setRate(Double.parseDouble(et[5].getText().toString()));
-
-                    String updateQuery = "update daily_atten set srno = "+worker.get(position).getSrno()+", ";
-                    updateQuery+="e_name = '"+worker.get(position).getName()+"', ";
-                    updateQuery+="a_status = '"+worker.get(position).getPreset()+"', ";
-                    updateQuery+="in_time = '"+worker.get(position).getInTime()+"', ";
-                    updateQuery+="out_time = '"+worker.get(position).getOutTime()+"', ";
-                    updateQuery+="rate = "+worker.get(position).getRate()+" ";
-                    updateQuery+="where id = "+work.getId();
-
                     try
                     {
-                        db.execSQL(updateQuery);
-                        db.close();
-                        Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
-                    }
-                    catch (Exception e)
-                    {
-                        Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
+                        if(et[1].getText().toString().equals("") || et[2].getText().toString().equals(""))
+                        {
+                            throw new EmptyStringException();
+                        }
 
-                    for(int i=0; i<et.length; i++)
-                    {
-                        et[i].setEnabled(false);
-                        et[i].setFocusable(false);
-                        et[i].setFocusableInTouchMode(false);
-                        et[i].setClickable(false);
+                        worker.get(position).setEditable(false);
+                        worker.get(position).setSrno(Integer.parseInt(et[0].getText().toString()));
+                        worker.get(position).setName(et[1].getText().toString());
+                        worker.get(position).setPreset(et[2].getText().toString());
+                        worker.get(position).setInTime(et[3].getText().toString());
+                        worker.get(position).setOutTime(et[4].getText().toString());
+                        worker.get(position).setRate(Double.parseDouble(et[5].getText().toString()));
+
+                        String updateQuery = "update daily_atten set srno = "+worker.get(position).getSrno()+", ";
+                        updateQuery+="e_name = '"+worker.get(position).getName()+"', ";
+                        updateQuery+="a_status = '"+worker.get(position).getPreset()+"', ";
+                        updateQuery+="in_time = '"+worker.get(position).getInTime()+"', ";
+                        updateQuery+="out_time = '"+worker.get(position).getOutTime()+"', ";
+                        updateQuery+="rate = "+worker.get(position).getRate()+" ";
+                        updateQuery+="where id = "+work.getId();
+
+                        try
+                        {
+                            db.execSQL(updateQuery);
+                            db.close();
+                            Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
+                        for(int i=0; i<et.length; i++)
+                        {
+                            et[i].setEnabled(false);
+                            et[i].setFocusable(false);
+                            et[i].setFocusableInTouchMode(false);
+                            et[i].setClickable(false);
+                        }
+                        et[2].setClickable(true);
+
                     }
-                    et[2].setClickable(true);
+                    catch (NumberFormatException nfe)
+                    {
+                        Toast.makeText(cont,"Rate should be Numeric...!",Toast.LENGTH_SHORT).show();
+                    }
+                    catch (EmptyStringException ese)
+                    {
+                        Toast.makeText(cont,ese.toString(),Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -181,7 +196,8 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
                 return true;
             }
         });
-        pop.setOnDismissListener(new PopupMenu.OnDismissListener() {
+        pop.setOnDismissListener(new PopupMenu.OnDismissListener()
+        {
             @Override
             public void onDismiss(PopupMenu menu)
             {

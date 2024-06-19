@@ -92,36 +92,54 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                     }
 
-                    material.get(position).setEditable(false);
-                    material.get(position).setAssemblyMark(et[1].getText().toString());
-                    material.get(position).setName(et[2].getText().toString());
-                    material.get(position).setQty(Integer.parseInt(et[3].getText().toString()));
-
-                    String updateQuery = "update tbl_billofmaterialdetails set assembly_mark = '"+material.get(position).getAssemblyMark()+"', ";
-                    updateQuery += "name = '"+material.get(position).getName()+"',";
-                    updateQuery += "qty = "+material.get(position).getQty();
-                    updateQuery += " where id = "+material.get(position).getId();
-
                     try
                     {
-                        db.execSQL(updateQuery);
-                        db.close();
-                        Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
+                        if(et[1].getText().toString().equals("") || et[2].getText().toString().equals(""))
+                        {
+                            throw new EmptyStringException();
+                        }
+                        material.get(position).setEditable(false);
+                        material.get(position).setAssemblyMark(et[1].getText().toString().toUpperCase());
+                        material.get(position).setName(et[2].getText().toString().toString());
+                        material.get(position).setQty(Integer.parseInt(et[3].getText().toString()));
+
+                        String updateQuery = "update tbl_billofmaterialdetails set assembly_mark = '"+material.get(position).getAssemblyMark()+"', ";
+                        updateQuery += "name = '"+material.get(position).getName()+"',";
+                        updateQuery += "qty = "+material.get(position).getQty();
+                        updateQuery += " where id = "+material.get(position).getId();
+
+                        try
+                        {
+                            db.execSQL(updateQuery);
+                            db.close();
+                            Toast.makeText(cont,"Record Updated",Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
+                        for(int i=1; i<et.length; i++)
+                        {
+                            et[i].setEnabled(false);
+                            et[i].setFocusable(false);
+                            et[i].setFocusableInTouchMode(false);
+                            et[i].setClickable(false);
+                        }
+                        imgEdit.setImageResource(R.drawable.edit);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                        Toast.makeText(cont,"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
+                    }
+                    catch (EmptyStringException ese)
+                    {
+                        Toast.makeText(cont,ese.toString(),Toast.LENGTH_SHORT).show();
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(cont,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cont,"Error : "+e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
-
-                    for(int i=1; i<et.length; i++)
-                    {
-                        et[i].setEnabled(false);
-                        et[i].setFocusable(false);
-                        et[i].setFocusableInTouchMode(false);
-                        et[i].setClickable(false);
-                    }
-                    imgEdit.setImageResource(R.drawable.edit);
-
                 }
                 else
                 {
