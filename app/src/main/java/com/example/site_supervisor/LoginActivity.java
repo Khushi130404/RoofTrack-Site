@@ -85,7 +85,6 @@ public class LoginActivity extends Activity
                     if(temp_phone.equals(phone))
                     {
                         flag = true;
-                        //Toast.makeText(getApplicationContext(),"Phone "+phone,Toast.LENGTH_LONG).show();
 
                         int otp = random.nextInt(9999);
                         while(otp<1000)

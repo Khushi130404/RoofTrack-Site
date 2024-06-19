@@ -51,9 +51,7 @@ public class PreviousAttendanceAdapter extends ArrayAdapter
         {
             et[i] = view.findViewById(id[i]);
         }
-
-        //Button btUpdate = view.findViewById(R.id.btUpdate);
-
+        
         ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
         et[0].setText(""+work.getSrno());
