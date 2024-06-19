@@ -138,6 +138,15 @@ public class MaterialConsumptionActivity extends Activity
             }
 
         });
+
+        imgUploaded.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
     }
 
     private void showPopupMenu(View view)
