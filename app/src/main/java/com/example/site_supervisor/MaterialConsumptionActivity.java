@@ -2,9 +2,12 @@ package com.example.site_supervisor;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +38,7 @@ public class MaterialConsumptionActivity extends Activity
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
     ListView listMaterial;
-    ImageView imgAdd;
+    ImageView imgAdd, imgGallery, imgCamera, imgUploaded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +49,9 @@ public class MaterialConsumptionActivity extends Activity
         listMaterial = findViewById(R.id.listMaterial);
         imgAdd = findViewById(R.id.imgAdd);
         tvDate = findViewById(R.id.tvDate);
+        imgGallery = findViewById(R.id.imgGallery);
+        imgCamera = findViewById(R.id.imgCamera);
+        imgUploaded = findViewById(R.id.imgUploaded);
 
         material = new ArrayList<>();
 
@@ -83,6 +89,16 @@ public class MaterialConsumptionActivity extends Activity
             public void onClick(View v)
             {
                 showPopupMenu(v);
+            }
+        });
+
+        imgGallery.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(gallery,111);
             }
         });
 
@@ -173,5 +189,45 @@ public class MaterialConsumptionActivity extends Activity
             }
         });
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
+    }
+
+    public void onActivityResult(int reqCode, int resCode, Intent data)
+    {
+        if(reqCode==111 && resCode==RESULT_OK)
+        {
+            Uri imgPath = data.getData();
+
+            try
+            {
+                db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+
+            Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
+            cur.moveToFirst();
+            int id = cur.getInt(0)+1;
+
+            ContentValues values = new ContentValues();
+            values.put("id", id);
+            values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+            values.put("image",imgPath.toString());
+            values.put("date",getIntent().getStringExtra("date"));
+
+            long newRowId = db.insert("tbl_daily_image", null, values);
+
+            if (newRowId == -1)
+            {
+                Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+            }
+
+            db.close();
+        }
     }
 }
