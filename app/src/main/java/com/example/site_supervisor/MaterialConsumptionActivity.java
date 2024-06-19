@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,12 +23,18 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MaterialConsumptionActivity extends Activity
 {
@@ -39,6 +46,7 @@ public class MaterialConsumptionActivity extends Activity
     String path = dbPath+dbName;
     ListView listMaterial;
     ImageView imgAdd, imgGallery, imgCamera, imgUploaded;
+    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -102,6 +110,34 @@ public class MaterialConsumptionActivity extends Activity
             }
         });
 
+        imgCamera.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                File photoFile = null;
+                try
+                {
+                    photoFile = createImageFile();
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+
+                if (photoFile != null)
+                {
+                    imageUri = FileProvider.getUriForFile(getApplicationContext(),
+                            "com.your.package.name.fileprovider",
+                            photoFile);
+
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(takePictureIntent, 101);
+                }
+            }
+
+        });
     }
 
     private void showPopupMenu(View view)
@@ -191,9 +227,92 @@ public class MaterialConsumptionActivity extends Activity
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
 
+    private void dispatchTakePictureIntent()
+    {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+        {
+            File photoFile = null;
+            try
+            {
+                photoFile = createImageFile();
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+
+            if (photoFile != null)
+            {
+                imageUri = FileProvider.getUriForFile(this,
+                        "com.your.package.name.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(takePictureIntent, 101);
+            }
+        }
+    }
+
+
+
+    private File createImageFile() throws IOException
+    {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File imageFile = File.createTempFile(
+                imageFileName,
+                ".jpg",
+                storageDir
+        );
+        return imageFile;
+    }
+
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
-        if(reqCode==111 && resCode==RESULT_OK)
+        if(reqCode==101 && resCode==RESULT_OK)
+        {
+            String imageUri="";
+            if (imageUri != null)
+            {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+
+                int id = 1;
+                Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
+                if(cur.moveToFirst())
+                {
+                    id = cur.getInt(0)+1;
+                }
+                cur.close();
+
+                ContentValues values = new ContentValues();
+                values.put("id", id);
+                values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+                values.put("image",imageUri);
+                values.put("date",getIntent().getStringExtra("date"));
+
+                long newRowId = db.insert("tbl_daily_image", null, values);
+
+                if (newRowId == -1)
+                {
+                    Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                }
+
+                db.close();
+            }
+        }
+        else if(reqCode==111 && resCode==RESULT_OK)
         {
             Uri imgPath = data.getData();
 
