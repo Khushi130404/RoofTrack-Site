@@ -206,9 +206,13 @@ public class MaterialConsumptionActivity extends Activity
                 Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
             }
 
+            int id = 1;
             Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
-            cur.moveToFirst();
-            int id = cur.getInt(0)+1;
+            if(cur.moveToFirst())
+            {
+                id = cur.getInt(0)+1;
+            }
+            cur.close();
 
             ContentValues values = new ContentValues();
             values.put("id", id);
