@@ -274,52 +274,17 @@ public class MaterialConsumptionActivity extends Activity
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
+        Bitmap imageBitmap = null;
         if(reqCode==101 && resCode==RESULT_OK)
         {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-
-                try
-                {
-                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
-                }
-                catch (Exception e)
-                {
-                    Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
-                }
-
-                int id = 1;
-                Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
-                if(cur.moveToFirst())
-                {
-                    id = cur.getInt(0)+1;
-                }
-                cur.close();
-
-                ContentValues values = new ContentValues();
-                values.put("id", id);
-                values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-                values.put("image",bitmapToByteArray(imageBitmap));
-                values.put("date",getIntent().getStringExtra("date"));
-
-                long newRowId = db.insert("tbl_daily_image", null, values);
-
-                if (newRowId == -1)
-                {
-                    Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
-                }
-
-                db.close();
+            imageBitmap = (Bitmap) extras.get("data");
 
         }
         else if(reqCode==111 && resCode==RESULT_OK)
         {
             Uri imageUri = data.getData();
-            Bitmap imageBitmap = null;
+
             try
             {
                 ContentResolver contentResolver = getContentResolver();
@@ -330,43 +295,42 @@ public class MaterialConsumptionActivity extends Activity
             {
                 e.printStackTrace();
             }
-
-            try
-            {
-                db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
-            }
-            catch (Exception e)
-            {
-                Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
-            }
-
-            int id = 1;
-            Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
-            if(cur.moveToFirst())
-            {
-                id = cur.getInt(0)+1;
-            }
-            cur.close();
-
-            ContentValues values = new ContentValues();
-            values.put("id", id);
-            values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-            values.put("image",bitmapToByteArray(imageBitmap));
-            values.put("date",getIntent().getStringExtra("date"));
-
-            long newRowId = db.insert("tbl_daily_image", null, values);
-
-            if (newRowId == -1)
-            {
-                Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
-            }
-
-            db.close();
         }
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        int id = 1;
+        Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
+        if(cur.moveToFirst())
+        {
+            id = cur.getInt(0)+1;
+        }
+        cur.close();
+
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+        values.put("image",bitmapToByteArray(imageBitmap));
+        values.put("date",getIntent().getStringExtra("date"));
+
+        long newRowId = db.insert("tbl_daily_image", null, values);
+
+        if (newRowId == -1)
+        {
+            Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
     }
 
     private byte[] bitmapToByteArray(Bitmap bitmap)
