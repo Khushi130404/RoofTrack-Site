@@ -181,7 +181,7 @@ public class MaterialConsumptionActivity extends Activity
         SetImageAdapter sia = new SetImageAdapter(getApplicationContext(),R.layout.set_image_adapter,image);
         lvImage.setAdapter(sia);
 
-        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }
 
     private void showPopupMenu(View view)
@@ -296,41 +296,44 @@ public class MaterialConsumptionActivity extends Activity
                 e.printStackTrace();
             }
         }
-        try
+        if(resCode==RESULT_OK)
         {
-            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
-        }
+            try
+            {
+                db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+            }
 
-        int id = 1;
-        Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
-        if(cur.moveToFirst())
-        {
-            id = cur.getInt(0)+1;
+            int id = 1;
+            Cursor cur = db.rawQuery("select Max(id) from tbl_daily_image",null);
+            if(cur.moveToFirst())
+            {
+                id = cur.getInt(0)+1;
+            }
+            cur.close();
+
+            ContentValues values = new ContentValues();
+            values.put("id", id);
+            values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+            values.put("image",bitmapToByteArray(imageBitmap));
+            values.put("date",getIntent().getStringExtra("date"));
+
+            long newRowId = db.insert("tbl_daily_image", null, values);
+
+            if (newRowId == -1)
+            {
+                Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+            }
+
+            db.close();
         }
-        cur.close();
-
-        ContentValues values = new ContentValues();
-        values.put("id", id);
-        values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-        values.put("image",bitmapToByteArray(imageBitmap));
-        values.put("date",getIntent().getStringExtra("date"));
-
-        long newRowId = db.insert("tbl_daily_image", null, values);
-
-        if (newRowId == -1)
-        {
-            Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
     }
 
     private byte[] bitmapToByteArray(Bitmap bitmap)
