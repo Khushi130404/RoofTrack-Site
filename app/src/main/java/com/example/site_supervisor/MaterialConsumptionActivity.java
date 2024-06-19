@@ -160,13 +160,21 @@ public class MaterialConsumptionActivity extends Activity
 
         List<byte[]> image = new ArrayList<>();
 
-        Cursor cur = db.rawQuery("select image from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
-        while(cur.moveToNext())
+        Cursor cur = null;
+        try
         {
-            image.add(cur.getBlob(0));
-        }
+            cur = db.rawQuery("select image from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
+            while(cur.moveToNext())
+            {
+                image.add(cur.getBlob(0));
+            }
 
-        cur.close();
+            cur.close();
+        }
+        catch (Exception e)
+        {
+
+        }
         db.close();
         ListView lvImage = popupView.findViewById(R.id.lvImage);
 
@@ -364,6 +372,7 @@ public class MaterialConsumptionActivity extends Activity
     private byte[] bitmapToByteArray(Bitmap bitmap)
     {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
         bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
