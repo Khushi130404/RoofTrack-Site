@@ -13,6 +13,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class SiteSupervisorProfileActivity extends Activity
 {
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
@@ -76,7 +78,7 @@ public class SiteSupervisorProfileActivity extends Activity
         {
             for(int i=0; i<tvId.length; i++)
             {
-                tv[i].setText(cur.getColumnName(i+1));
+                tv[i].setText(toInitCase(cur.getColumnName(i+1)));
                 et[i].setText(cur.getString(i+1));
             }
         }
@@ -123,7 +125,7 @@ public class SiteSupervisorProfileActivity extends Activity
                 {
                     if(!et[i].getText().toString().equals(""))
                     {
-                        updateQuery+=tv[i].getText().toString()+" = '";
+                        updateQuery+=tv[i].getText().toString().toLowerCase()+" = '";
                         updateQuery+=et[i].getText().toString()+"' , ";
                     }
                 }
@@ -234,5 +236,31 @@ public class SiteSupervisorProfileActivity extends Activity
             }
         });
         pop.show();
+    }
+
+    public static String toInitCase(String input)
+    {
+        if (input == null || input.isEmpty())
+        {
+            return input;
+        }
+
+        String[] words = input.split("\\s+");
+        StringBuilder initCase = new StringBuilder();
+
+        for (String word : words)
+        {
+            if (word.length() > 0)
+            {
+                if (initCase.length() > 0)
+                {
+                    initCase.append(" ");
+                }
+                initCase.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1).toLowerCase());
+            }
+        }
+
+        return initCase.toString();
     }
 }
