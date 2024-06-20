@@ -14,7 +14,7 @@
         android:id="@+id/tvCompany"
         android:text="Shri Balaji Roofing"
         style="@style/company_text"
-        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
@@ -25,11 +25,12 @@
         android:layout_height="0dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="#F1DEC9"
+        android:background="@color/white"
         android:paddingLeft="70dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:weightSum="4"
-        android:layout_weight="0.5"
+        android:layout_weight="0.55"
         >
 
         <TextView
@@ -45,7 +46,7 @@
             android:src="@drawable/profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             ></ImageView>
 
     </LinearLayout>
@@ -53,7 +54,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="4.95"
         >
 
         <LinearLayout
@@ -67,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -78,7 +79,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -86,7 +87,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -95,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -106,7 +107,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -114,7 +115,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -123,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -134,7 +135,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -142,7 +143,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -151,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -162,7 +163,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -170,7 +171,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -179,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -190,7 +191,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -198,7 +199,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -207,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -218,7 +219,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -226,7 +227,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -235,7 +236,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -246,7 +247,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -254,7 +255,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -263,7 +264,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -274,7 +275,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -282,7 +283,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -291,7 +292,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -302,7 +303,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -310,7 +311,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -319,7 +320,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -330,7 +331,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -338,7 +339,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -347,7 +348,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -358,7 +359,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -366,7 +367,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -375,7 +376,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -386,7 +387,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -394,7 +395,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -403,7 +404,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -414,7 +415,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -422,7 +423,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -431,7 +432,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -442,7 +443,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -450,7 +451,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -459,7 +460,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -470,7 +471,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -478,7 +479,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -487,7 +488,7 @@
                 android:layout_width="match_parent"
                 android:weightSum="3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 style="@style/linear_style"
                 android:orientation="horizontal"
                 >
@@ -498,7 +499,7 @@
                     android:layout_width="0dp"
                     style="@style/tv_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     ></TextView>
 
                 <EditText
@@ -506,7 +507,7 @@
                     android:layout_width="0dp"
                     style="@style/et_style"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.8"
                     ></EditText>
 
             </LinearLayout>
@@ -531,6 +532,7 @@
             android:layout_marginBottom="12dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
+            android:textColor="@color/white"
             android:background="@drawable/button3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -546,6 +548,7 @@
             android:background="@drawable/button3"
             android:layout_marginRight="50dp"
             android:layout_width="0dp"
+            android:textColor="@color/white"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></Button>

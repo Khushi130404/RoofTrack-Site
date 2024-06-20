@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="text">#61584C</color>
     <color name="company">#4B4D4B</color>
+    <color name="profile_bar">#C7C8CC</color>
 </resources>

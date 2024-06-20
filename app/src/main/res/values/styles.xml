@@ -19,7 +19,7 @@
     </style>
 
     <style name="company_text">
-        <item name="android:textSize">25dp</item>
+        <item name="android:textSize">27dp</item>
         <item name="android:textColor">@color/company</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif-medium</item>
@@ -29,6 +29,7 @@
     <style name="head_text">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
