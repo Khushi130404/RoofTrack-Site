@@ -5,19 +5,19 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:background="@drawable/background_gradient"
-    android:weightSum="8.5"
+    android:weightSum="8.7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnSiteDashboardActivity">
 
     <TextView
         android:id="@+id/tvCompany"
-        android:layout_marginTop="20dp"
         style="@style/company_text"
+        android:paddingTop="5dp"
         android:text="Shri Balaji Roofing"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_weight="1.3"
         ></TextView>
 
     <LinearLayout

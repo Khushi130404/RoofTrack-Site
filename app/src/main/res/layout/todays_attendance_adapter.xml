@@ -4,17 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:weightSum="6"
-    android:paddingLeft="5dp"
+    android:padding="5dp"
     android:layout_gravity="center"
-    android:paddingRight="5dp"
-    android:background="@drawable/et_box"
+    android:background="@drawable/profile_edittext"
     android:layout_height="match_parent">
 
     <CheckBox
         android:id="@+id/cbPresent"
         android:layout_width="0dp"
-        android:background="@drawable/et_box"
         style="@style/list_text"
+        android:background="@drawable/profile_edittext"
         android:layout_weight="0.5"
         ></CheckBox>
 
@@ -23,11 +22,11 @@
         android:layout_width="0dp"
         android:text="0"
         android:enabled="false"
+        android:background="@drawable/profile_edittext"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:inputType="none"
-        android:background="@drawable/et_box"
         style="@style/list_text"
         android:layout_weight="0.5"
         ></EditText>
@@ -36,6 +35,7 @@
     <EditText
         android:id="@+id/etName"
         android:layout_width="0dp"
+        android:background="@drawable/profile_edittext"
         android:text="Name"
         android:enabled="false"
         android:focusable="false"
@@ -44,7 +44,6 @@
         android:inputType="none"
         android:maxLines="2"
         android:scrollHorizontally="true"
-        android:background="@drawable/et_box"
         style="@style/list_text"
         android:layout_weight="1.5"
         ></EditText>
@@ -52,8 +51,8 @@
     <EditText
         android:id="@+id/etInTime"
         android:layout_width="0dp"
-        android:background="@drawable/et_box"
         android:text="In\nTime"
+        android:background="@drawable/profile_edittext"
         android:inputType="time"
         style="@style/list_text"
         android:layout_weight="1"
@@ -63,8 +62,8 @@
         android:id="@+id/etOutTime"
         android:layout_width="0dp"
         android:text="Out\nTime"
+        android:background="@drawable/profile_edittext"
         android:inputType="time"
-        android:background="@drawable/et_box"
         style="@style/list_text"
         android:layout_weight="1"
         ></EditText>
@@ -74,7 +73,7 @@
         android:layout_width="0dp"
         android:text="Rate"
         android:inputType="numberDecimal"
-        android:background="@drawable/et_box"
+        android:background="@drawable/profile_edittext"
         style="@style/list_text"
         android:layout_weight="1"
         ></EditText>
@@ -85,7 +84,7 @@
         android:src="@drawable/done"
         style="@style/list_text"
         android:padding="2dp"
-        android:background="@drawable/et_box"
+        android:background="@drawable/profile_edittext"
         android:layout_width="0dp"
         android:layout_weight="0.5"
         ></ImageView>
