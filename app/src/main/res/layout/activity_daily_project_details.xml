@@ -11,13 +11,13 @@
     tools:context=".DailyProjectDetailsActivity">
 
     <TextView
-        android:textSize="20dp"
+        android:textSize="25dp"
         style="@style/company_text"
-        android:text="Daily attendance and work report"
+        android:text="Daily Attendance\nAnd\n Work Report"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         ></TextView>
 
     <LinearLayout
@@ -27,106 +27,140 @@
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6.5"
+        android:layout_weight="6"
         >
-
+        
         <LinearLayout
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/profile_edittext"
+            android:alpha="0.7"
+            android:orientation="vertical"
             android:weightSum="3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="5"
             >
 
-            <TextView
-                android:text="Select project : "
-                android:layout_width="0dp"
-                style="@style/project_info_text"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
-                ></TextView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
 
-            <Spinner
-                android:id="@+id/spProject"
-                android:textAlignment="center"
-                style="@style/project_info_text"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.9"
-                ></Spinner>
+                <TextView
+                    android:text="Project : "
+                    android:layout_width="0dp"
+                    style="@style/project_info_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.58"
+                    ></TextView>
+
+                <Spinner
+                    android:id="@+id/spProject"
+                    android:textAlignment="textStart"
+                    style="@style/project_info_text"
+                    android:layout_width="0dp"
+                    android:popupBackground="@color/white"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.42"
+                    ></Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:text="Customer : "
+                    android:layout_width="0dp"
+                    style="@style/project_info_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/tvCustomer"
+                    android:layout_width="0dp"
+                    style="@style/project_info_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2"
+                    ></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:text="PO No : "
+                    android:layout_width="0dp"
+                    style="@style/project_info_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/tvPONo"
+                    android:layout_width="0dp"
+                    style="@style/project_info_text"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2"
+                    ></TextView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            >
-
-            <TextView
-                android:text="Customer Name : "
-                android:layout_width="0dp"
-                style="@style/project_info_text"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                ></TextView>
-
-            <TextView
-                android:id="@+id/tvCustomer"
-                android:layout_width="0dp"
-                style="@style/project_info_text"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                ></TextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            >
-
-            <TextView
-                android:text="PO No : "
-                android:layout_width="0dp"
-                style="@style/project_info_text"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                ></TextView>
-
-            <TextView
-                android:id="@+id/tvPONo"
-                android:layout_width="0dp"
-                style="@style/project_info_text"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                ></TextView>
-
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:layout_weight="3"
-            ></TextView>
+            android:weightSum="1"
+            >
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/date_box"
+                android:alpha="0.6"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                ></TextView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:weightSum="4"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             >
 
             <Button
@@ -167,6 +201,7 @@
                 android:text="Stud Bolt Consumption"
                 android:layout_width="match_parent"
                 style="@style/button_style"
+                android:layout_marginBottom="40dp"
                 android:background="@drawable/button3"
                 android:layout_height="0dp"
                 android:layout_weight="1"
