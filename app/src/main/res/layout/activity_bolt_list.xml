@@ -22,14 +22,14 @@
         <ImageView
             android:id="@+id/imgAdd"
             android:src="@drawable/add_material"
-            android:layout_width="0dp"
             android:padding="5dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
+            android:layout_weight="0.7"
+            style="@style/add_attendance_box"
             ></ImageView>
 
         <TextView
             android:id="@+id/tvDate"
+            android:layout_weight="4.3"
             style="@style/date_text"
             ></TextView>
 
