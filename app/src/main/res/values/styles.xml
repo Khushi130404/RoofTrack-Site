@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#3C707C</item>
+        <item name="colorPrimaryDark">#76ABAE</item>
+        <item name="colorAccent">#164863</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:listDivider">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
     <style name="login_text">
         <item name="android:textColor">@color/text</item>
     </style>
@@ -39,11 +49,27 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14dp</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/profile_edittext</item>
+    </style>
+
+    <style name="list_text2">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/profile_edittext</item>
+        <item name="android:enabled">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:inputType">none</item>
     </style>
 
     <style name="add_attendance_box">
-        <item name="android:alpha">0.7</item>
+        <item name="android:alpha">0.85</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">3dp</item>
         <item name="android:paddingTop">2dp</item>

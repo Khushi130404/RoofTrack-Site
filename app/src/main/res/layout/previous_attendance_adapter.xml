@@ -4,96 +4,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:weightSum="6"
-    android:paddingLeft="5dp"
+    android:padding="5dp"
     android:layout_gravity="center"
-    android:paddingRight="5dp"
-    android:background="@drawable/et_box"
+    android:background="@drawable/profile_edittext"
     android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/etSrno"
-        android:layout_width="0dp"
-        android:text="0"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        style="@style/list_text"
-        android:layout_weight="0.3"
-        ></EditText>
-
+        style="@style/list_text2"
+        android:layout_weight="0.3" />
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="0dp"
-        android:text="Name"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
         android:maxLines="2"
-        android:scrollHorizontally="true"
-        android:background="@drawable/et_box"
-        style="@style/list_text"
+        style="@style/list_text2"
         android:layout_weight="1.5"
         ></EditText>
 
     <EditText
         android:id="@+id/etPresent"
-        android:layout_width="0dp"
-        android:enabled="true"
-        android:text="P"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:clickable="true"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        style="@style/list_text"
+        style="@style/list_text2"
         android:layout_weight="1.1"
         ></EditText>
 
     <EditText
         android:id="@+id/etInTime"
-        android:layout_width="0dp"
-        android:background="@drawable/et_box"
-        android:text="In\nTime"
-        style="@style/list_text"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
+        style="@style/list_text2"
         android:layout_weight="0.9"
         ></EditText>
 
     <EditText
         android:id="@+id/etOutTime"
-        android:layout_width="0dp"
-        android:text="Out\nTime"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        style="@style/list_text"
+        style="@style/list_text2"
         android:layout_weight="0.9"
         ></EditText>
 
     <EditText
         android:id="@+id/etRate"
-        android:layout_width="0dp"
-        android:text="Rate"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        style="@style/list_text"
+        style="@style/list_text2"
         android:layout_weight="0.8"
         ></EditText>
 
@@ -101,10 +49,8 @@
     <ImageView
         android:id="@+id/imgEdit"
         android:src="@drawable/edit"
-        style="@style/list_text"
+        style="@style/list_text2"
         android:padding="2dp"
-        android:background="@drawable/et_box"
-        android:layout_width="0dp"
         android:layout_weight="0.5"
         ></ImageView>
 
