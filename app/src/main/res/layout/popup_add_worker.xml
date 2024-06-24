@@ -22,82 +22,49 @@
             android:id="@+id/etSrno"
             android:hint="Srno"
             android:inputType="number"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            style="@style/linear_style_add"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etName"
             android:hint="Name"
-            android:gravity="center"
             android:inputType="text"
-            style="@style/linear_style_add"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etPresent"
             android:hint="Present"
             android:inputType="text"
-            android:gravity="center"
-            style="@style/linear_style_add"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etInTime"
             android:hint="In Time"
-            android:gravity="center"
             android:inputType="time"
-            style="@style/linear_style_add"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etOutTime"
             android:hint="Out Time"
-            android:gravity="center"
-            style="@style/linear_style_add"
+            style="@style/popup_et"
             android:inputType="time"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             ></EditText>
 
         <EditText
             android:id="@+id/etRate"
             android:hint="Rate"
-            android:gravity="center"
-            style="@style/linear_style_add"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            style="@style/popup_et"
             ></EditText>
 
         <Button
             android:id="@+id/btAdd"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="20dp"
-            android:inputType="numberDecimal"
-            android:background="@drawable/button3"
-            android:layout_marginRight="20dp"
             android:text="Add Worker"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.2"
+            style="@style/popup_bt"
             ></Button>
 
     </LinearLayout>
