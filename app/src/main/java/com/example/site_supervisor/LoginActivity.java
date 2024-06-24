@@ -105,7 +105,7 @@ public class LoginActivity extends Activity
                         i.putExtra("otp",otp);
                         SmsManager sms=SmsManager.getDefault();
                         String message = "Your OTP for LogIn is "+otp;
-                        //sms.sendTextMessage(phone, null, message, null,null);
+                        sms.sendTextMessage(phone, null, message, null,null);
                         startActivity(i);
                         break;
                     }

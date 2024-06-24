@@ -11,7 +11,7 @@
     tools:context=".MaterialConsumptionActivity">
 
     <TextView
-        android:text="Material Consumption Report"
+        android:text="Material Consumption"
         style="@style/daily_details_heading"
         ></TextView>
 
