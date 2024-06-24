@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:weightSum="4"
-        android:padding="18dp"
+        android:padding="15dp"
         android:orientation="horizontal"
         android:layout_weight="1"
         >
@@ -77,6 +77,7 @@
         <ImageView
             android:id="@+id/imgAdd"
             android:layout_width="0dp"
+            android:padding="3dp"
             android:src="@drawable/add_material"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -102,7 +103,8 @@
         <ImageView
             android:id="@+id/imgUploaded"
             android:layout_width="0dp"
-            android:src="@drawable/add_material"
+            android:src="@drawable/uploaded"
+            android:paddingBottom="2dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></ImageView>
