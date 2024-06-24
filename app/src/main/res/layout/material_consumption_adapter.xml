@@ -2,83 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:weightSum="5.5"
-    android:background="@drawable/et_box"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
+    android:weightSum="6"
+    android:background="@drawable/profile_edittext"
+    android:layout_gravity="center"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/etPosition"
-        android:text="0"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        android:gravity="center"
-        style="@style/list_text"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        style="@style/list_text2"
         android:layout_weight="0.5"
         ></EditText>
 
     <EditText
         android:id="@+id/etMark"
-        android:text="Assembly\nMark"
-        android:layout_width="0dp"
-        android:focusable="false"
-        style="@style/list_text"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:background="@drawable/et_box"
-        android:inputType="none"
-        android:gravity="center"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        style="@style/list_text2"
+        android:layout_weight="1.7"
         ></EditText>
 
     <EditText
         android:id="@+id/etName"
-        android:text="Name"
-        android:gravity="center"
-        android:background="@drawable/et_box"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        style="@style/list_text"
-        android:inputType="none"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        style="@style/list_text2"
         android:layout_weight="2"
         ></EditText>
 
     <EditText
         android:id="@+id/etQty"
-        android:text="Weight"
-        android:gravity="center"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        style="@style/list_text"
-        android:clickable="false"
-        android:inputType="none"
-        android:background="@drawable/et_box"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        style="@style/list_text2"
+        android:layout_weight="0.8"
         ></EditText>
 
     <ImageView
         android:id="@+id/imgEdit"
         android:src="@drawable/edit"
-        android:layout_width="0dp"
-        android:background="@drawable/et_box"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
-        style="@style/list_text"
-        android:layout_height="50dp"
-        android:layout_weight="0.5"
+        style="@style/list_text2"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_weight="1"
         ></ImageView>
-
 
 </LinearLayout>

@@ -11,18 +11,14 @@
 
     <CheckBox
         android:id="@+id/cbPresent"
-        android:layout_width="0dp"
         style="@style/list_text"
-        android:background="@drawable/profile_edittext"
         android:layout_weight="0.5"
         ></CheckBox>
 
     <EditText
         android:id="@+id/etSrno"
-        android:layout_width="0dp"
         android:text="0"
         android:enabled="false"
-        android:background="@drawable/profile_edittext"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="false"
@@ -34,8 +30,6 @@
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="0dp"
-        android:background="@drawable/profile_edittext"
         android:text="Name"
         android:enabled="false"
         android:focusable="false"
@@ -50,9 +44,7 @@
 
     <EditText
         android:id="@+id/etInTime"
-        android:layout_width="0dp"
         android:text="In\nTime"
-        android:background="@drawable/profile_edittext"
         android:inputType="time"
         style="@style/list_text"
         android:layout_weight="1"
@@ -60,9 +52,7 @@
 
     <EditText
         android:id="@+id/etOutTime"
-        android:layout_width="0dp"
         android:text="Out\nTime"
-        android:background="@drawable/profile_edittext"
         android:inputType="time"
         style="@style/list_text"
         android:layout_weight="1"
@@ -70,10 +60,8 @@
 
     <EditText
         android:id="@+id/etRate"
-        android:layout_width="0dp"
         android:text="Rate"
         android:inputType="numberDecimal"
-        android:background="@drawable/profile_edittext"
         style="@style/list_text"
         android:layout_weight="1"
         ></EditText>
@@ -84,8 +72,6 @@
         android:src="@drawable/done"
         style="@style/list_text"
         android:padding="2dp"
-        android:background="@drawable/profile_edittext"
-        android:layout_width="0dp"
         android:layout_weight="0.5"
         ></ImageView>
 

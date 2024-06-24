@@ -114,12 +114,18 @@ public class BoltListActivity extends Activity
                     Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
                 }
 
-                Cursor cur = db.rawQuery("select Max(id) from tbl_boltlist",null);
-                cur.moveToFirst();
-                int id = cur.getInt(0)+1;
+                Cursor cur = null;
 
                 try
                 {
+                    cur = db.rawQuery("select id from tbl_boltlist where upper(type) like '%"+etBolt.getText().toString().toUpperCase()+"%'",null);
+                    cur.moveToFirst();
+                    int id = cur.getInt(0);
+
+                    cur = db.rawQuery("select Max(id) from tbl_boltlist",null);
+                    cur.moveToFirst();
+                    id = cur.getInt(0)+1;
+
                     BoltListPojo blp = new BoltListPojo();
                     blp.setId(id);
                     if(etBolt.getText().toString().equals(""))
@@ -147,17 +153,28 @@ public class BoltListActivity extends Activity
                         Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
                     }
 
+                    cur.close();
                     db.close();
                     bolt.add(blp);
                     popupWindow.dismiss();
                 }
                 catch (NumberFormatException nfe)
                 {
+                    cur.close();
+                    db.close();
                     Toast.makeText(getApplicationContext(),"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
                 }
                 catch (EmptyStringException ese)
                 {
+                    cur.close();
+                    db.close();
                     Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    cur.close();
+                    db.close();
+                    Toast.makeText(getApplicationContext(),"Bolt type doesn't exist...!",Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@color/white"
+    android:minWidth="250dp"
+    android:minHeight="320dp"
+    android:alpha="0.97"
+    android:background="@drawable/popup_add_box"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -11,7 +14,7 @@
         android:layout_height="0dp"
         android:padding="10dp"
         android:orientation="vertical"
-        android:weightSum="7"
+        android:weightSum="7.2"
         android:layout_weight="1"
         >
 
@@ -19,73 +22,49 @@
             android:id="@+id/etSrno"
             android:hint="Srno"
             android:inputType="number"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etName"
             android:hint="Name"
-            android:gravity="center"
             android:inputType="text"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etPresent"
             android:hint="Present"
             android:inputType="text"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etInTime"
             android:hint="In Time"
-            android:gravity="center"
             android:inputType="time"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etOutTime"
             android:hint="Out Time"
-            android:gravity="center"
+            style="@style/popup_et"
             android:inputType="time"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             ></EditText>
 
         <EditText
             android:id="@+id/etRate"
             android:hint="Rate"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            style="@style/popup_et"
             ></EditText>
 
         <Button
             android:id="@+id/btAdd"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
-            android:inputType="numberDecimal"
-            android:layout_marginRight="40dp"
-            android:text="Add Attendance"
-            android:textSize="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:text="Add Worker"
+            style="@style/popup_bt"
             ></Button>
 
     </LinearLayout>

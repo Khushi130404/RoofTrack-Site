@@ -11,111 +11,67 @@
     tools:context=".TodaysAttendanceActivity">
 
     <TextView
-        style="@style/company_text"
+        style="@style/daily_details_heading"
         android:text="Today's Attendance"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
         ></TextView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        android:layout_weight="0.5"
+        style="@style/date_heading"
         >
 
         <ImageView
             android:id="@+id/imgAdd"
-            android:src="@drawable/attendance"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            style="@style/add_attendance_box"
             ></ImageView>
 
         <TextView
             android:id="@+id/tvDate"
-            android:textColor="@color/text"
-            android:text="Date : "
-            android:textSize="15dp"
-            android:gravity="center|end"
-            android:layout_marginRight="10dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
+            style="@style/date_text"
             ></TextView>
-
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="#A0C9C3"
-        android:weightSum="6"
-        android:layout_weight="0.7"
+        style="@style/linear_head"
         >
 
         <TextView
-            android:layout_width="0dp"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="0.3"
             ></TextView>
 
         <TextView
-            android:layout_width="0dp"
             android:text="SrNo"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="0.7"
             ></TextView>
 
-
         <TextView
-            android:layout_width="0dp"
             android:text="Name"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="1.5"
             ></TextView>
 
         <TextView
-            android:layout_width="0dp"
             android:text="In"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             ></TextView>
 
         <TextView
-            android:layout_width="0dp"
             android:text="Out"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             ></TextView>
 
         <TextView
-            android:layout_width="0dp"
             android:text="Rate"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             ></TextView>
 
-
         <TextView
-            android:layout_width="0dp"
             style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="0.5"
             ></TextView>
 
@@ -123,11 +79,7 @@
 
     <ListView
         android:id="@+id/listAttendance"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:layout_weight="5.8"
+        style="@style/daily_details_listview"
         ></ListView>
 
 </LinearLayout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/login_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,14 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            app:cardBackgroundColor="#C8B6A6"
-            app:cardCornerRadius="70dp"
-            android:alpha="0.8"
+            app:cardCornerRadius="80sp"
+            app:cardBackgroundColor="@color/white"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
+            android:alpha="0.8"
             android:paddingTop="60dp"
-            android:paddingBottom="60dp"
+            android:paddingBottom="80dp"
             android:layout_marginBottom="50dp"
             app:cardElevation="15dp">
 
@@ -39,14 +39,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2.8"
+                android:alpha="0.95"
+                android:background="@drawable/login_edittext"
                 android:orientation="vertical"
                 >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_weight="0.5"
+                    android:textSize="35dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="Sign In"
+                    android:gravity="center|bottom"
+                    ></TextView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="3"
                     android:layout_weight="0.8"
@@ -55,39 +67,36 @@
                     <TextView
                         android:text="Company : "
                         android:gravity="center|end"
-                        style="@style/login_text"
+                        android:textColor="@color/black"
+                        android:alpha="0.65"
+                        android:textSize="17dp"
+                        android:layout_marginLeft="6dp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         ></TextView>
 
                     <Spinner
                         android:id="@+id/sp"
                         android:layout_width="0dp"
+                        style="@style/site_text"
+                        android:alpha="0.8"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1.8"
                         ></Spinner>
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5"
-                    style="@style/login_text"
-                    android:text="Signin to start your session"
-                    android:gravity="center"
-                    ></TextView>
-
                 <EditText
                     android:id="@+id/etPhone"
                     android:hint="contact number"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="20dp"
-                    android:alpha="0.9"
+                    android:alpha="0.8"
+                    android:textColorHint="#9DB2BF"
+                    android:textColor="#27374D"
                     android:inputType="phone"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/profile_edittext"
                     android:layout_marginRight="20dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -97,10 +106,12 @@
 
                 <CheckBox
                     android:id="@+id/cbRemember"
-                    android:text="Remember Me"
-                    style="@style/login_text"
+                    android:text=" Remember Me"
+                    style="@style/daily_text"
+                    android:textSize="17dp"
                     android:backgroundTint="#61584C"
                     android:shadowColor="#61584C"
+                    android:buttonTint="#A87676"
                     android:textColorHint="#61584C"
                     android:searchResultHighlightColor="#61584C"
                     android:layout_marginLeft="20dp"
@@ -115,7 +126,10 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="@drawable/button3"
+                    android:alpha="0.8"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button1"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="40dp"

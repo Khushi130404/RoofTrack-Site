@@ -161,21 +161,34 @@ public class MaterialConsumptionActivity extends Activity
         List<byte[]> image = new ArrayList<>();
 
         Cursor cur = null;
+        int expId=0;
         try
         {
-            cur = db.rawQuery("select image from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
+            cur = db.rawQuery("select id,image from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"'",null);
             while(cur.moveToNext())
             {
-                image.add(cur.getBlob(0));
+                expId = cur.getInt(0);
+                image.add(cur.getBlob(1));
             }
-
-            cur.close();
         }
         catch (Exception e)
         {
-
+            if(expId!=0)
+            {
+                cur = db.rawQuery("select id from tbl_daily_image where ProjectID = "+getIntent().getIntExtra("projectId",0)+" and date = '"+getIntent().getStringExtra("date")+"' and id >"+expId,null);
+                cur.moveToFirst();
+                expId = cur.getInt(0);
+                db.execSQL("delete from tbl_daily_image where id = "+expId);
+                Toast.makeText(getApplicationContext(),"Some image was too large display",Toast.LENGTH_SHORT).show();
+            }
         }
-        db.close();
+        finally
+        {
+
+            cur.close();
+            db.close();
+        }
+
         ListView lvImage = popupView.findViewById(R.id.lvImage);
 
         SetImageAdapter sia = new SetImageAdapter(getApplicationContext(),R.layout.set_image_adapter,image);

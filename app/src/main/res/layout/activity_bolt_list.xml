@@ -12,87 +12,55 @@
 
     <TextView
         android:text="Stud Bolt List"
-        android:gravity="center"
-        style="@style/company_text"
-        android:textSize="27dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        style="@style/daily_details_heading"
         ></TextView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        android:layout_weight="0.5"
+        style="@style/date_heading"
         >
 
         <ImageView
             android:id="@+id/imgAdd"
             android:src="@drawable/add_material"
-            android:layout_width="0dp"
             android:padding="5dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
+            android:layout_weight="0.7"
+            style="@style/add_attendance_box"
             ></ImageView>
 
         <TextView
             android:id="@+id/tvDate"
-            android:text="Date : "
-            android:gravity="center|end"
-            android:layout_marginRight="10dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4.1"
+            android:layout_weight="4.3"
+            style="@style/date_text"
             ></TextView>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:weightSum="3.5"
-        android:layout_weight="0.8"
+        style="@style/linear_head"
         >
 
         <TextView
-            android:text="Sr No"
-            android:gravity="center"
+            android:text="SrNo"
             style="@style/head_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            ></TextView>
-
-        <TextView
-            android:text="Bolt Type"
-            android:layout_width="0dp"
-            style="@style/head_text"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            ></TextView>
-
-        <TextView
-            android:text="Qty"
-            android:gravity="center"
-            android:layout_width="0dp"
-            style="@style/head_text"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             ></TextView>
 
         <TextView
-            android:text="Edit"
-            android:gravity="center"
-            android:layout_width="0dp"
+            android:text="Bolt Type"
             style="@style/head_text"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:text="Qty"
+            style="@style/head_text"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:text="Edit"
+            style="@style/head_text"
+            android:layout_weight="1"
             ></TextView>
 
 
@@ -100,9 +68,7 @@
 
     <ListView
         android:id="@+id/listBolt"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5.7"
+        style="@style/daily_details_listview"
         ></ListView>
 
 </LinearLayout>

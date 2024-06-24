@@ -100,7 +100,7 @@ public class MaterialConsumptionAdapter extends ArrayAdapter
                         }
                         material.get(position).setEditable(false);
                         material.get(position).setAssemblyMark(et[1].getText().toString().toUpperCase());
-                        material.get(position).setName(et[2].getText().toString().toString());
+                        material.get(position).setName(et[2].getText().toString().toUpperCase());
                         material.get(position).setQty(Integer.parseInt(et[3].getText().toString()));
 
                         String updateQuery = "update tbl_billofmaterialdetails set assembly_mark = '"+material.get(position).getAssemblyMark()+"', ";
