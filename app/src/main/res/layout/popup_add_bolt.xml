@@ -3,7 +3,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@color/white"
+    android:minWidth="220dp"
+    android:minHeight="200dp"
+    android:alpha="0.98"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:background="@drawable/popup_add_box"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -11,40 +16,28 @@
         android:layout_height="0dp"
         android:padding="10dp"
         android:orientation="vertical"
-        android:weightSum="3"
+        android:weightSum="3.2"
         android:layout_weight="1"
         >
 
         <EditText
             android:id="@+id/etBolt"
             android:hint="Bolt Type"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:inputType="text"
+            style="@style/popup_et"
             ></EditText>
 
         <EditText
             android:id="@+id/etQty"
             android:hint="Quantity"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            style="@style/popup_et"
             android:inputType="numberDecimal"
-            android:layout_weight="1"
             ></EditText>
 
         <Button
             android:id="@+id/btAdd"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
             android:text="Add Bolt"
-            android:textSize="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            style="@style/popup_bt"
             ></Button>
 
     </LinearLayout>
