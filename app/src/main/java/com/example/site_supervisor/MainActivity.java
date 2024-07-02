@@ -19,8 +19,6 @@ public class MainActivity extends Activity
 
         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(i);
-
+        finish();
     }
-
-
 }
