@@ -2,6 +2,7 @@ package com.example.site_supervisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -108,6 +109,30 @@ public class SiteInventoryActivity extends Activity
             public void onNothingSelected(AdapterView<?> parent)
             {
                 // Do nothing
+            }
+        });
+
+        btDC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READONLY);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                Cursor cur = db.rawQuery("select ProjectID from tbl_ProjectSite where ProjectName = '"+spProject.getSelectedItem().toString()+"'",null);
+                cur.moveToFirst();
+
+                db.close();
+
+                Intent i = new Intent(getApplicationContext(), DeliveryChallanActivity.class);
+                i.putExtra("projectId",cur.getInt(0));
+                i.putExtra("date",tvDate.getText().toString());
+                startActivity(i);
             }
         });
 

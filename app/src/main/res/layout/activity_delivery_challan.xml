@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:orientation="vertical"
+android:weightSum="8"
+android:background="@drawable/background_gradient"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".DeliveryChallanActivity">
+
+<TextView
+    android:text="Delivery Challan"
+    style="@style/daily_details_heading"
+    ></TextView>
+
+<LinearLayout
+    style="@style/date_heading"
+    >
+
+    <ImageView
+        android:id="@+id/imgAdd"
+        android:src="@drawable/add_material"
+        android:padding="5dp"
+        android:layout_weight="0.7"
+        style="@style/add_attendance_box"
+        ></ImageView>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_weight="4.3"
+        style="@style/date_text"
+        ></TextView>
+
+</LinearLayout>
+
+<LinearLayout
+    style="@style/linear_head"
+    >
+
+    <TextView
+        android:text=""
+        style="@style/head_text"
+        android:layout_weight="0.7"
+        ></TextView>
+
+    <TextView
+        android:text="Code"
+        style="@style/head_text"
+        android:layout_weight="1.5"
+        ></TextView>
+
+    <TextView
+        android:text="Name"
+        style="@style/head_text"
+        android:layout_weight="1.5"
+        ></TextView>
+
+    <TextView
+        android:text="Unit"
+        style="@style/head_text"
+        android:layout_weight="0.8"
+        ></TextView>
+
+    <TextView
+        android:text="Qty"
+        style="@style/head_text"
+        android:layout_weight="0.8"
+        ></TextView>
+
+    <TextView
+        android:text=""
+        style="@style/head_text"
+        android:layout_weight="0.7"
+        ></TextView>
+
+</LinearLayout>
+
+<ListView
+    android:id="@+id/listChallan"
+    style="@style/daily_details_listview"
+    ></ListView>
+
+</LinearLayout>
