@@ -160,7 +160,7 @@ tools:context=".SiteInventoryActivity">
         android:layout_marginBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2.8"
         >
 
         <Button
@@ -175,7 +175,7 @@ tools:context=".SiteInventoryActivity">
             ></Button>
 
         <Button
-            android:id="@+id/btPrevAttendance"
+            android:id="@+id/btStock"
             android:text="Stock Material"
             android:layout_width="match_parent"
             style="@style/button_style"

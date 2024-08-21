@@ -55,5 +55,13 @@ public class OnSiteDashboardActivity extends Activity
                 startActivity(i);
             }
         });
+
+        siteInventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),SiteInventoryActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
