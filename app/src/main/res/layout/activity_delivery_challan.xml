@@ -78,7 +78,7 @@ tools:context=".DeliveryChallanActivity">
 </LinearLayout>
 
 <ListView
-    android:id="@+id/listBolt"
+    android:id="@+id/listChallan"
     style="@style/daily_details_listview"
     ></ListView>
 

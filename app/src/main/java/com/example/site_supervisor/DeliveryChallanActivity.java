@@ -1,6 +1,7 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -19,12 +20,12 @@ import java.util.List;
 public class DeliveryChallanActivity extends Activity {
 
     TextView tvDate;
-//    List<BoltListPojo> bolt;
+    List<DeliveryChallanPojo> challan;
     SQLiteDatabase db = null;
     public String dbPath = "/data/data/com.example.site_supervisor/databases/";
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
-//    ListView listBolt;
+    ListView listChallan;
     ImageView imgAdd;
 
 
@@ -33,12 +34,11 @@ public class DeliveryChallanActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_challan);
 
-//        listBolt = findViewById(R.id.listBolt);
+        listChallan = findViewById(R.id.listChallan);
         imgAdd = findViewById(R.id.imgAdd);
         tvDate = findViewById(R.id.tvDate);
 
-//        bolt = new ArrayList<>();
-
+        challan = new ArrayList<>();
         tvDate.setText(tvDate.getText().toString()+getIntent().getStringExtra("date"));
 
         try
@@ -49,6 +49,30 @@ public class DeliveryChallanActivity extends Activity {
         {
             Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
+
+        Cursor cur = db.rawQuery("select id from tbl_dc where date like '%"+getIntent().getStringExtra("date")+"%'",null);
+
+        while (cur.moveToNext())
+        {
+            Cursor cur2 = db.rawQuery("select id,itemcode,itemname,uom,qty from tbl_dc_details where parentid = "+cur.getInt(0),null);
+
+            while (cur2.moveToNext())
+            {
+                DeliveryChallanPojo dcp = new DeliveryChallanPojo();
+                dcp.setId(0);
+                dcp.setCode(cur2.getString(1));
+                dcp.setItemName(cur2.getString(2));
+                dcp.setUnit(cur2.getString(3));
+                dcp.setQty(Float.parseFloat(cur2.getString(4)));
+                challan.add(dcp);
+            }
+        }
+
+//        BoltListAdapter boltListAdapter = new BoltListAdapter(getApplicationContext(),R.layout.bolt_list_adapter,bolt);
+//        listBolt.setAdapter(boltListAdapter);
+
+        db.close();
+
 
     }
 }
