@@ -6,6 +6,15 @@ public class DeliveryChallanPojo {
     String itemName;
     float qty;
     String unit;
+    boolean isEditable = false;
+
+    public boolean getEditable() {
+        return isEditable;
+    }
+
+    public void setEditable(boolean editable) {
+        isEditable = editable;
+    }
 
     public int getId() {
         return id;
