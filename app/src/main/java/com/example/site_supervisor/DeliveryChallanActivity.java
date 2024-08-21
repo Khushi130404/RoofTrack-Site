@@ -50,7 +50,7 @@ public class DeliveryChallanActivity extends Activity {
             Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
 
-        Cursor cur = db.rawQuery("select id from tbl_dc where date like '%"+getIntent().getStringExtra("date")+"%'",null);
+        Cursor cur = db.rawQuery("select id from tbl_dc where dsdate like '%"+getIntent().getStringExtra("date")+"%'",null);
 
         while (cur.moveToNext())
         {
@@ -68,11 +68,9 @@ public class DeliveryChallanActivity extends Activity {
             }
         }
 
-//        BoltListAdapter boltListAdapter = new BoltListAdapter(getApplicationContext(),R.layout.bolt_list_adapter,bolt);
-//        listBolt.setAdapter(boltListAdapter);
+        DeliveryChallanAdapter deliveryChallanAdapter = new DeliveryChallanAdapter(getApplicationContext(), R.layout.delivery_challan_adapter,challan);
+        listChallan.setAdapter(deliveryChallanAdapter);
 
         db.close();
-
-
     }
 }

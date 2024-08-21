@@ -39,7 +39,7 @@ public class DeliveryChallanAdapter extends ArrayAdapter
 
         ImageView imgEdit = view.findViewById(R.id.imgEdit);
 
-        EditText et[] = new EditText[4];
+        EditText et[] = new EditText[5];
         int id[] = {R.id.etPosition,R.id.etCode,R.id.etItemName,R.id.etUnit,R.id.etQty};
 
         for(int i=0; i<id.length; i++)
@@ -106,10 +106,10 @@ public class DeliveryChallanAdapter extends ArrayAdapter
                         challan.get(position).setQty(Float.parseFloat(et[4].getText().toString()));
 
                         String updateQuery = "update tbl_dc_details set itemcode = '"+challan.get(position).getCode()+"', ";
-                        updateQuery += "itemname = "+challan.get(position).getItemName();
-                        updateQuery += "uom = "+challan.get(position).getUnit();
-                        updateQuery += "qty = "+challan.get(position).getQty();
-                        updateQuery += " where id = "+challan.get(position).getId();
+                        updateQuery += "itemname = '"+challan.get(position).getItemName()+"', ";
+                        updateQuery += "uom = '"+challan.get(position).getUnit()+"', ";
+                        updateQuery += "qty = '"+challan.get(position).getQty()+"' ";
+                        updateQuery += "where id = "+challan.get(position).getId();
 
                         try
                         {
