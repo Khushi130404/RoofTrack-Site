@@ -2,13 +2,18 @@ package com.example.site_supervisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +22,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class SiteInventoryActivity extends Activity
@@ -51,6 +58,58 @@ public class SiteInventoryActivity extends Activity
 
         calendar = Calendar.getInstance();
         setDateToToday();
+
+        try
+        {
+            db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READONLY);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        Cursor cur = db.rawQuery("select ProjectName from tbl_ProjectSite",null);
+
+        List<String> projectName = new ArrayList<>();
+
+        while (cur.moveToNext())
+        {
+            projectName.add(cur.getString(0));
+        }
+        db.close();
+        spinnerAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,projectName);
+        spProject.setAdapter(spinnerAdapter);
+
+        tvDate.setOnClickListener(v -> showDatePickerDialog());
+
+        spProject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READONLY);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+
+                Cursor cur = db.rawQuery("select CustomerName,CustomerPO from tbl_ProjectSite where ProjectName = '"+projectName.get(position)+"'",null);
+                cur.moveToFirst();
+                tvCustomer.setText(cur.getString(0));
+                tvPONo.setText(cur.getString(1));
+
+                db.close();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // Do nothing
+            }
+        });
 
     }
 
