@@ -10,7 +10,7 @@ android:layout_height="match_parent"
 tools:context=".SiteInventoryActivity">
 
 <TextView
-    android:textSize="25dp"
+    android:textSize="32dp"
     style="@style/company_text"
     android:text="Site\nInventory"
     android:layout_width="match_parent"
@@ -160,7 +160,7 @@ tools:context=".SiteInventoryActivity">
         android:layout_marginBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.8"
+        android:layout_weight="2.4"
         >
 
         <Button
