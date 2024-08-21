@@ -40,7 +40,7 @@ tools:context=".DeliveryChallanActivity">
     >
 
     <TextView
-        android:text="SrNo"
+        android:text=""
         style="@style/head_text"
         android:layout_weight="0.7"
         ></TextView>
@@ -72,7 +72,7 @@ tools:context=".DeliveryChallanActivity">
     <TextView
         android:text=""
         style="@style/head_text"
-        android:layout_weight="0.6"
+        android:layout_weight="0.7"
         ></TextView>
 
 </LinearLayout>
