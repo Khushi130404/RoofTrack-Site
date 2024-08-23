@@ -134,24 +134,21 @@ public class DeliveryChallanActivity extends Activity {
                         Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
                     }
 
-                    cur = db.rawQuery("select id from tbl_boltlist where upper(type) like '%"+etBolt.getText().toString().toUpperCase()+"%'",null);
-                    cur.moveToFirst();
-                    int id = cur.getInt(0);
+                    DeliveryChallanPojo dcp = new DeliveryChallanPojo();
 
                     cur = db.rawQuery("select Max(id) from tbl_boltlist",null);
                     cur.moveToFirst();
-                    id = cur.getInt(0)+1;
+                    dcp.setId(cur.getInt(0)+1);
 
-                    BoltListPojo blp = new BoltListPojo();
-                    blp.setId(id);
-                    if(etBolt.getText().toString().equals(""))
+                    if(etCode.getText().toString().equals(""))
                     {
                         throw new EmptyStringException();
                     }
-                    blp.setType(etBolt.getText().toString().toUpperCase());
-                    blp.setQty(Integer.parseInt(etQty.getText().toString()));
+                    dcp.setCode(etCode.getText().toString().toUpperCase());
+                    dcp.setQty(Float.parseFloat(etQty.getText().toString()));
+                    dcp.setUnit((etUnit.getText().toString()));
 
-                    ContentValues values = new ContentValues();
+                    values = new ContentValues();
                     values.put("id", id);
                     values.put("ProjectID", getIntent().getIntExtra("projectId",0));
                     values.put("type",blp.getType());
