@@ -104,6 +104,7 @@ public class DeliveryChallanActivity extends Activity {
         EditText etCode = popupView.findViewById(R.id.etCode);
         EditText etQty = popupView.findViewById(R.id.etQty);
         EditText etUnit = popupView.findViewById(R.id.etUnit);
+        EditText etItemName = popupView.findViewById(R.id.etItemName);
         Button btAdd = popupView.findViewById(R.id.btAdd);
 
         btAdd.setOnClickListener(new View.OnClickListener()
@@ -124,6 +125,21 @@ public class DeliveryChallanActivity extends Activity {
 
                 try
                 {
+                    if(etCode.getText().toString().equals("") || etItemName.getText().toString().equals("") || etUnit.getText().toString().equals(""))
+                    {
+                        throw new EmptyStringException();
+                    }
+
+                    DeliveryChallanPojo dcp = new DeliveryChallanPojo();
+
+                    cur = db.rawQuery("select Max(id) from tbl_dc_details",null);
+                    cur.moveToFirst();
+                    dcp.setId(cur.getInt(0)+1);
+                    dcp.setCode(etCode.getText().toString().toUpperCase());
+                    dcp.setItemName(etItemName.getText().toString());
+                    dcp.setQty(Float.parseFloat(etQty.getText().toString()));
+                    dcp.setUnit((etUnit.getText().toString()));
+
                     cur = db.rawQuery("select max(id) from tbl_dc",null);
                     cur.moveToFirst();
                     int id_parent = cur.getInt(0)+1;
@@ -144,28 +160,11 @@ public class DeliveryChallanActivity extends Activity {
                         Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
                     }
 
-                    DeliveryChallanPojo dcp = new DeliveryChallanPojo();
-
-                    cur = db.rawQuery("select Max(id) from tbl_dc_details",null);
-                    cur.moveToFirst();
-                    dcp.setId(cur.getInt(0)+1);
-
-                    cur = db.rawQuery("select itemname from tbl_dc_details where lower(assembly_mark) = '"+etCode.getText().toString().toLowerCase()+"'",null);
-                    cur.moveToFirst();
-
-                    if(etCode.getText().toString().equals(""))
-                    {
-                        throw new EmptyStringException();
-                    }
-                    dcp.setCode(etCode.getText().toString().toUpperCase());
-                    dcp.setItemName(cur.getString(0));
-                    dcp.setQty(Float.parseFloat(etQty.getText().toString()));
-                    dcp.setUnit((etUnit.getText().toString()));
-
                     values = new ContentValues();
                     values.put("id", dcp.getId());
                     values.put("itemcode",dcp.getCode());
                     values.put("itemname",dcp.getItemName());
+                    values.put("uom",dcp.getUnit());
                     values.put("qty",dcp.getQty());
                     values.put("parentid",id_parent);
 
@@ -187,19 +186,19 @@ public class DeliveryChallanActivity extends Activity {
                 }
                 catch (NumberFormatException nfe)
                 {
-                    cur.close();
+                    if(cur!=null) cur.close();
                     db.close();
                     Toast.makeText(getApplicationContext(),"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
                 }
                 catch (EmptyStringException ese)
                 {
-                    cur.close();
+                    if(cur!=null) cur.close();
                     db.close();
                     Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
                 {
-                    cur.close();
+                    if(cur!=null) cur.close();
                     db.close();
                     Toast.makeText(getApplicationContext(),"Bolt type doesn't exist...!",Toast.LENGTH_SHORT).show();
                 }

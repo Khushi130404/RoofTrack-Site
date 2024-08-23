@@ -16,13 +16,20 @@
         android:layout_height="0dp"
         android:padding="10dp"
         android:orientation="vertical"
-        android:weightSum="4.2"
+        android:weightSum="5.2"
         android:layout_weight="1"
         >
 
         <EditText
             android:id="@+id/etCode"
             android:hint="Item code"
+            android:inputType="text"
+            style="@style/popup_et"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/etItemName"
+            android:hint="Item Name"
             android:inputType="text"
             style="@style/popup_et"
             ></EditText>
