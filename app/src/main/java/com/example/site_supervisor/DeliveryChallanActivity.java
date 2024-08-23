@@ -136,26 +136,30 @@ public class DeliveryChallanActivity extends Activity {
 
                     DeliveryChallanPojo dcp = new DeliveryChallanPojo();
 
-                    cur = db.rawQuery("select Max(id) from tbl_boltlist",null);
+                    cur = db.rawQuery("select Max(id) from tbl_dc_details",null);
                     cur.moveToFirst();
                     dcp.setId(cur.getInt(0)+1);
+
+                    cur = db.rawQuery("select itemname from tbl_dc_details where lower(assembly_mark) = '"+etCode.getText().toString().toLowerCase()+"'",null);
+                    cur.moveToFirst();
 
                     if(etCode.getText().toString().equals(""))
                     {
                         throw new EmptyStringException();
                     }
                     dcp.setCode(etCode.getText().toString().toUpperCase());
+                    dcp.setItemName(cur.getString(0));
                     dcp.setQty(Float.parseFloat(etQty.getText().toString()));
                     dcp.setUnit((etUnit.getText().toString()));
 
                     values = new ContentValues();
-                    values.put("id", id);
-                    values.put("ProjectID", getIntent().getIntExtra("projectId",0));
-                    values.put("type",blp.getType());
-                    values.put("qty",blp.getQty());
-                    values.put("date",getIntent().getStringExtra("date"));
+                    values.put("id", dcp.getId());
+                    values.put("itemcode",dcp.getCode());
+                    values.put("itemname",dcp.getItemName());
+                    values.put("qty",dcp.getQty());
+                    values.put("parentid",id_parent);
 
-                    long newRowId = db.insert("tbl_boltlist", null, values);
+                    newRowId = db.insert("tbl_dc_details", null, values);
 
                     if (newRowId == -1)
                     {
@@ -168,7 +172,7 @@ public class DeliveryChallanActivity extends Activity {
 
                     cur.close();
                     db.close();
-                    bolt.add(blp);
+                    challan.add(dcp);
                     popupWindow.dismiss();
                 }
                 catch (NumberFormatException nfe)
