@@ -4,8 +4,14 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,7 +82,7 @@ public class DeliveryChallanActivity extends Activity {
 
     private void showPopupMenu(View view)
     {
-        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_add_bolt, null);
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_add_dc, null);
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -84,8 +90,9 @@ public class DeliveryChallanActivity extends Activity {
 
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-        EditText etBolt = popupView.findViewById(R.id.etBolt);
+        EditText etCode = popupView.findViewById(R.id.etCode);
         EditText etQty = popupView.findViewById(R.id.etQty);
+        EditText etUnit = popupView.findViewById(R.id.etUnit);
         Button btAdd = popupView.findViewById(R.id.btAdd);
 
         btAdd.setOnClickListener(new View.OnClickListener()
