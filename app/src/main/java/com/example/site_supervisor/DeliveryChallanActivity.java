@@ -73,4 +73,100 @@ public class DeliveryChallanActivity extends Activity {
 
         db.close();
     }
+
+    private void showPopupMenu(View view)
+    {
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_add_bolt, null);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true;
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        EditText etBolt = popupView.findViewById(R.id.etBolt);
+        EditText etQty = popupView.findViewById(R.id.etQty);
+        Button btAdd = popupView.findViewById(R.id.btAdd);
+
+        btAdd.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READWRITE);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+
+                Cursor cur = null;
+
+                try
+                {
+                    cur = db.rawQuery("select id from tbl_boltlist where upper(type) like '%"+etBolt.getText().toString().toUpperCase()+"%'",null);
+                    cur.moveToFirst();
+                    int id = cur.getInt(0);
+
+                    cur = db.rawQuery("select Max(id) from tbl_boltlist",null);
+                    cur.moveToFirst();
+                    id = cur.getInt(0)+1;
+
+                    BoltListPojo blp = new BoltListPojo();
+                    blp.setId(id);
+                    if(etBolt.getText().toString().equals(""))
+                    {
+                        throw new EmptyStringException();
+                    }
+                    blp.setType(etBolt.getText().toString().toUpperCase());
+                    blp.setQty(Integer.parseInt(etQty.getText().toString()));
+
+                    ContentValues values = new ContentValues();
+                    values.put("id", id);
+                    values.put("ProjectID", getIntent().getIntExtra("projectId",0));
+                    values.put("type",blp.getType());
+                    values.put("qty",blp.getQty());
+                    values.put("date",getIntent().getStringExtra("date"));
+
+                    long newRowId = db.insert("tbl_boltlist", null, values);
+
+                    if (newRowId == -1)
+                    {
+                        Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    }
+
+                    cur.close();
+                    db.close();
+                    bolt.add(blp);
+                    popupWindow.dismiss();
+                }
+                catch (NumberFormatException nfe)
+                {
+                    cur.close();
+                    db.close();
+                    Toast.makeText(getApplicationContext(),"Qty should be Integer...!",Toast.LENGTH_SHORT).show();
+                }
+                catch (EmptyStringException ese)
+                {
+                    cur.close();
+                    db.close();
+                    Toast.makeText(getApplicationContext(),ese.toString(),Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    cur.close();
+                    db.close();
+                    Toast.makeText(getApplicationContext(),"Bolt type doesn't exist...!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
+    }
+
 }
