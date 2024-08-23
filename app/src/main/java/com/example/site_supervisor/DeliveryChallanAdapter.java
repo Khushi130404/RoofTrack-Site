@@ -1,13 +1,19 @@
 package com.example.site_supervisor;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -101,8 +107,8 @@ public class DeliveryChallanAdapter extends ArrayAdapter
                             throw new EmptyStringException();
                         }
                         challan.get(position).setCode(et[1].getText().toString().toUpperCase());
-                        challan.get(position).setItemName(et[2].getText().toString().toUpperCase());
-
+                        challan.get(position).setItemName(et[2].getText().toString());
+                        challan.get(position).setUnit(et[3].getText().toString());
                         challan.get(position).setQty(Float.parseFloat(et[4].getText().toString()));
 
                         String updateQuery = "update tbl_dc_details set itemcode = '"+challan.get(position).getCode()+"', ";
