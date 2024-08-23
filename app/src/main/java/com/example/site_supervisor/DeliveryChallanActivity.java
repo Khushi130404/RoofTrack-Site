@@ -59,7 +59,7 @@ public class DeliveryChallanActivity extends Activity {
             while (cur2.moveToNext())
             {
                 DeliveryChallanPojo dcp = new DeliveryChallanPojo();
-                dcp.setId(0);
+                dcp.setId(cur2.getInt(0));
                 dcp.setCode(cur2.getString(1));
                 dcp.setItemName(cur2.getString(2));
                 dcp.setUnit(cur2.getString(3));
