@@ -1,6 +1,7 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -113,6 +114,26 @@ public class DeliveryChallanActivity extends Activity {
 
                 try
                 {
+                    cur = db.rawQuery("select max(id) from tbl_dc",null);
+                    cur.moveToFirst();
+                    int id_parent = cur.getInt(0)+1;
+
+                    ContentValues values = new ContentValues();
+                    values.put("id", id_parent);
+                    values.put("dcno",0);
+                    values.put("dsdate",getIntent().getStringExtra("date"));
+
+                    long newRowId = db.insert("tbl_dc", null, values);
+
+                    if (newRowId == -1)
+                    {
+                        Toast.makeText(getApplicationContext(), "Error inserting data", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Data inserted with row ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                    }
+
                     cur = db.rawQuery("select id from tbl_boltlist where upper(type) like '%"+etBolt.getText().toString().toUpperCase()+"%'",null);
                     cur.moveToFirst();
                     int id = cur.getInt(0);
