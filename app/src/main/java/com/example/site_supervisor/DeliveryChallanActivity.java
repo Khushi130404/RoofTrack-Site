@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -74,6 +75,15 @@ public class DeliveryChallanActivity extends Activity {
                 challan.add(dcp);
             }
         }
+
+        imgAdd.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                showPopupMenu(v);
+            }
+        });
 
         DeliveryChallanAdapter deliveryChallanAdapter = new DeliveryChallanAdapter(getApplicationContext(), R.layout.delivery_challan_adapter,challan);
         listChallan.setAdapter(deliveryChallanAdapter);
