@@ -43,8 +43,8 @@
         android:id="@+id/imgEdit"
         android:src="@drawable/edit"
         style="@style/list_text2"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_weight="0.7"
         ></ImageView>
 

@@ -22,7 +22,7 @@
 
         <EditText
             android:id="@+id/etCode"
-            android:hint="Bolt Type"
+            android:hint="Item code"
             android:inputType="text"
             style="@style/popup_et"
             ></EditText>
@@ -36,7 +36,7 @@
 
         <EditText
             android:id="@+id/etUnit"
-            android:hint="Bolt Type"
+            android:hint="Unit"
             android:inputType="text"
             style="@style/popup_et"
             ></EditText>
@@ -44,7 +44,7 @@
 
         <Button
             android:id="@+id/btAdd"
-            android:text="Add Bolt"
+            android:text="Add Material"
             style="@style/popup_bt"
             ></Button>
 
