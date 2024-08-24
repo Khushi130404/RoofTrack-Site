@@ -95,7 +95,7 @@
         <ImageView
             android:id="@+id/imgCamera"
             android:layout_width="0dp"
-            android:src="@drawable/cam"
+            android:src="@drawable/camera"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></ImageView>
