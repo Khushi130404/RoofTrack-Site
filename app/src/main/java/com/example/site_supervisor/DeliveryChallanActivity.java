@@ -206,5 +206,4 @@ public class DeliveryChallanActivity extends Activity {
         });
         popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, 0);
     }
-
 }
