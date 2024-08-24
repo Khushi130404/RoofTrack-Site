@@ -52,7 +52,7 @@
       android:fillColor="@color/white"
       android:fillAlpha="0.5"/>
   <path
-      android:pathData="M15,45.3c0,1.2 -1,2.2 -2.2,2.2H3.6c-1.2,0 -2.2,-1 -2.2,-2.2V25.9c0,-1.2 1,-2.2 2.2,-2.2h9.2c1.2,0 2.2,1 2.2,2.2v19.4"
+      android:pathData="M16,45.3c0,1 -0.8,1.8 -1.8,1.8H4.8c-1,0 -1.8,-0.8 -1.8,-1.8V26.7c0,-1 0.8,-1.8 1.8,-1.8h8.4c1,0 1.8,0.8 1.8,1.8v18.6"
       android:fillColor="#a67d7d"/>
   <path
       android:pathData="M10.1,18.6m-3.2,0a3.2,3.2 0,1 1,6.4 0a3.2,3.2 0,1 1,-6.4 0" />
