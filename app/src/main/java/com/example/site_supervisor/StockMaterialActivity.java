@@ -1,6 +1,7 @@
 package com.example.site_supervisor;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +44,22 @@ public class StockMaterialActivity extends Activity {
         catch (Exception e)
         {
             Toast.makeText(getApplicationContext(),"Error : "+e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        Cursor cur = db.rawQuery("select itemcode,itemname, sum(cast(qty as real)) from tbl_dc_details group by itemcode,itemname",null);
+        int id = 0;
+        while(cur.moveToNext())
+        {
+            id++;
+            StockMaterialPojo smp = new StockMaterialPojo();
+            smp.setPos(id);
+            smp.setCode(cur.getString(0));
+            smp.setItemname(cur.getString(1));
+            smp.setDcQty(cur.getFloat(3));
+            Cursor cur2 = db.rawQuery("select ifnull(sum(qty),0) from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and assembly_mark = '"+cur.getString(0)+"'",null);
+            cur2.moveToFirst();
+            smp.setUsedQty(cur.getInt(0));
+            smp.setStockQty(smp.getDcQty()-smp.getUsedQty());
         }
     }
 }
