@@ -136,6 +136,30 @@ public class SiteInventoryActivity extends Activity
             }
         });
 
+        btStock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    db = SQLiteDatabase.openDatabase(path,null,SQLiteDatabase.OPEN_READONLY);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                Cursor cur = db.rawQuery("select ProjectID from tbl_ProjectSite where ProjectName = '"+spProject.getSelectedItem().toString()+"'",null);
+                cur.moveToFirst();
+
+                db.close();
+
+                Intent i = new Intent(getApplicationContext(), StockMaterialActivity.class);
+                i.putExtra("projectId",cur.getInt(0));
+                i.putExtra("date",tvDate.getText().toString());
+                startActivity(i);
+            }
+        });
+
     }
 
     private void setDateToToday()
