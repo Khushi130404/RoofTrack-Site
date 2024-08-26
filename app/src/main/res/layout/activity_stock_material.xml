@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:background="@drawable/background_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StockMaterialActivity">
+
+    <TextView
+        android:text="Delivery Challan"
+        style="@style/daily_details_heading"
+        ></TextView>
+
+    <LinearLayout
+        style="@style/date_heading"
+        >
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_weight="5"
+            style="@style/date_text"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_head"
+        >
+
+        <TextView
+            android:text="Sr\nNo"
+            style="@style/head_text"
+            android:layout_weight="0.6"
+            ></TextView>
+
+        <TextView
+            android:text="Item\nCode"
+            style="@style/head_text"
+            android:layout_weight="1.25"
+            ></TextView>
+
+        <TextView
+            android:text="Item\nName"
+            style="@style/head_text"
+            android:layout_weight="1.3"
+            ></TextView>
+
+        <TextView
+            android:text="DC\nQty"
+            style="@style/head_text"
+            android:layout_weight="0.95"
+            ></TextView>
+
+        <TextView
+            android:text="Used\nQty"
+            style="@style/head_text"
+            android:layout_weight="0.95"
+            ></TextView>
+
+        <TextView
+            android:text="Stock\nQty"
+            style="@style/head_text"
+            android:layout_weight="0.95"
+            ></TextView>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listStock"
+        style="@style/daily_details_listview"
+        ></ListView>
+
+</LinearLayout>
