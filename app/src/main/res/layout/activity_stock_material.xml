@@ -70,7 +70,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/listChallan"
+        android:id="@+id/listStock"
         style="@style/daily_details_listview"
         ></ListView>
 
