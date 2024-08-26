@@ -11,12 +11,13 @@
     tools:context=".StockMaterialActivity">
 
     <TextView
-        android:text="Delivery Challan"
+        android:text="Stock Material"
         style="@style/daily_details_heading"
         ></TextView>
 
     <LinearLayout
         style="@style/date_heading"
+        android:layout_weight="0.3"
         >
 
         <TextView
@@ -72,6 +73,7 @@
     <ListView
         android:id="@+id/listStock"
         style="@style/daily_details_listview"
+        android:layout_weight="6.1"
         ></ListView>
 
 </LinearLayout>
