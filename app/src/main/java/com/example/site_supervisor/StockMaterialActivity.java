@@ -61,5 +61,9 @@ public class StockMaterialActivity extends Activity {
             smp.setUsedQty(cur.getInt(0));
             smp.setStockQty(smp.getDcQty()-smp.getUsedQty());
         }
+
+        StockMaterialAdapter stockMaterialAdapter = new StockMaterialAdapter(getApplicationContext(),R.layout.stock_material_adapter,stock);
+        listStock.setAdapter(stockMaterialAdapter);
+        db.close();
     }
 }
