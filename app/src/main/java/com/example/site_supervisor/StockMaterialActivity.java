@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockMaterialActivity extends Activity {
@@ -36,6 +37,8 @@ public class StockMaterialActivity extends Activity {
 
         tvDate = findViewById(R.id.tvDate);
         listStock = findViewById(R.id.listStock);
+        stock = new ArrayList<>();
+        tvDate.setText(tvDate.getText().toString()+getIntent().getStringExtra("date"));
 
         try
         {
@@ -48,6 +51,7 @@ public class StockMaterialActivity extends Activity {
 
         Cursor cur = db.rawQuery("select itemcode,itemname, sum(cast(qty as real)) from tbl_dc_details group by itemcode,itemname",null);
         int id = 0;
+
         while(cur.moveToNext())
         {
             id++;
@@ -55,15 +59,17 @@ public class StockMaterialActivity extends Activity {
             smp.setPos(id);
             smp.setCode(cur.getString(0));
             smp.setItemname(cur.getString(1));
-            smp.setDcQty(cur.getFloat(3));
-            Cursor cur2 = db.rawQuery("select ifnull(sum(qty),0) from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and assembly_mark = '"+cur.getString(0)+"'",null);
+            smp.setDcQty(cur.getFloat(2));
+            Cursor cur2 = db.rawQuery("select ifnull(sum(qty),0) from tbl_billofmaterialdetails where ProjectId = "+getIntent().getIntExtra("projectId",0)+" and lower(assembly_mark) = '"+cur.getString(0).toLowerCase()+"'",null);
             cur2.moveToFirst();
-            smp.setUsedQty(cur.getInt(0));
+            smp.setUsedQty(cur2.getInt(0));
             smp.setStockQty(smp.getDcQty()-smp.getUsedQty());
+            stock.add(smp);
         }
 
         StockMaterialAdapter stockMaterialAdapter = new StockMaterialAdapter(getApplicationContext(),R.layout.stock_material_adapter,stock);
         listStock.setAdapter(stockMaterialAdapter);
+//        Toast.makeText(getApplicationContext(),""+stock.size(),Toast.LENGTH_LONG).show();
         db.close();
     }
 }

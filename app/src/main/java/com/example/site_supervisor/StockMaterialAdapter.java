@@ -22,8 +22,8 @@ public class StockMaterialAdapter extends ArrayAdapter
     public static String dbName= "Site_Supervisor.db";
     String path = dbPath+dbName;
 
-    public StockMaterialAdapter(@NonNull Context context, int resource, @NonNull List stock) {
-        super(context, resource, stock);
+    public StockMaterialAdapter(@NonNull Context cont, int resource, @NonNull List stock) {
+        super(cont, resource, stock);
         this.cont = cont;
         this.resource = resource;
         this.stock = stock;
@@ -41,7 +41,7 @@ public class StockMaterialAdapter extends ArrayAdapter
             et[i] = view.findViewById(id[i]);
         }
 
-        et[0].setText(""+position+1);
+        et[0].setText(""+(position+1));
         et[1].setText(stock.get(position).getCode());
         et[2].setText(stock.get(position).getItemname());
         et[3].setText(""+stock.get(position).getDcQty());
