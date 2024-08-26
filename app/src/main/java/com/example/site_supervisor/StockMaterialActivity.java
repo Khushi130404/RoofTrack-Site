@@ -16,6 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,11 @@ public class StockMaterialActivity extends Activity {
         tvDate = findViewById(R.id.tvDate);
         listStock = findViewById(R.id.listStock);
         stock = new ArrayList<>();
-        tvDate.setText(tvDate.getText().toString()+getIntent().getStringExtra("date"));
+
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String todayDate = today.format(formatter);
+        tvDate.setText(tvDate.getText().toString()+todayDate);
 
         try
         {
