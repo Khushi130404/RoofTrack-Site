@@ -33,3 +33,7 @@ This project was developed as part of an internship at VedInfosys using Android 
 - IDE: Android Studio
 - Database: SQLite (Used for testing, later switched to MySQL)
 - Storage : AWS (Work in Progress)
+
+## 📌 About
+
+This app was developed as part of an internship at VedInfosys for Shri Balaji Roofing and Steelone Infrastructure. It helps site supervisors efficiently manage site inventory and work progress, reducing manual errors and improving productivity.
