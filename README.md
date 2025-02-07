@@ -26,3 +26,10 @@ This project was developed as part of an internship at VedInfosys using Android 
 
 - Manage Site Supervisor Profile
 - Includes various details about the supervisor
+
+## 🛠️ Tech Stack
+
+- Language: Java
+- IDE: Android Studio
+- Database: SQLite (Used for testing, later switched to MySQL)
+- Storage : AWS (Work in Progress)
